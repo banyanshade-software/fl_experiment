@@ -7,6 +7,9 @@ let rec iter n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
   if e = e' then e else
   iter (n - 1) e'
 
+let parsef = Mlparser.exp
+let lexerf = Mllexer.token
+
 let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2html: main_lexbuf) *)
   Id.counter := 0;
   Typing.extenv := M.empty;
@@ -19,7 +22,7 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
                    (Alpha.f
                       (KNormal.f
                          (Typing.f
-                            (Parser.exp Lexer.token l)))))))))
+                            (parsef lexerf l)))))))))
 
 let string s = lexbuf stdout (Lexing.from_string s) (* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)
 
