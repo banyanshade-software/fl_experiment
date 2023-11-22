@@ -2,6 +2,12 @@
 (* parserが利用する変数、関数、型などの定義 *)
 open Syntax
 let addtyp x = (x, Type.gentyp ())
+
+(* return file, line, char from the given position *)
+let get_pos_info pos =
+  (pos.Lexing.pos_fname, pos.Lexing.pos_lnum, pos.Lexing.pos_cnum - pos.Lexing.pos_bol)
+;;
+
 %}
 
 /* (* 字句を表すデータ型の定義 (caml2html: parser_token) *) */
@@ -137,10 +143,11 @@ exp: /* (* 一般の式 (caml2html: parser_exp) *) */
     %prec prec_app
     { Array($2, $3) }
 | error
-    { failwith
-        (Printf.sprintf "parse error near characters %d-%d"
-           (Parsing.symbol_start ())
-           (Parsing.symbol_end ())) }
+    { let (_, start_line, start_char) = get_pos_info (Parsing.symbol_start_pos ()) in
+      let (_, end_line, end_char) = get_pos_info (Parsing.symbol_end_pos ()) in
+      failwith
+        (Printf.sprintf "parse error near line %d pos %d -- line %d pos %d"
+           start_line start_char end_line end_char) }
 
 fundef:
 | IDENT formal_args EQUAL exp
