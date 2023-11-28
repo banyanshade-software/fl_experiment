@@ -7,10 +7,12 @@ let rec iter n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
   if e = e' then e else
   iter (n - 1) e'
 
+(*
 let parsef = Mlparser.exp
 let lexerf = Mllexer.token
+*)
 
-let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2html: main_lexbuf) *)
+let lexbuf lexerf parsef outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2html: main_lexbuf) *)
   Id.counter := 0;
   Typing.extenv := M.empty;
   Emit.f outchan
@@ -24,13 +26,17 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
                          (Typing.f
                             (parsef lexerf l)))))))))
 
-let string s = lexbuf stdout (Lexing.from_string s) (* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)
+let string s = lexbuf Mllexer.token Mlparser.exp stdout (Lexing.from_string s) (* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)
 
 let file f = (* ファイルをコンパイルしてファイルに出力する (caml2html: main_file) *)
+  let open_file f = 
+    let ch = open_in (f ^ ".ml") in
+    if 1=1 then (Mllexer.token, Mlparser.exp, ch) else (Milexer.token, Miparser.exp, open_in (f ^ ".mira")) in
+  let (lexerf, parsef, inchan) = open_file f in
   let inchan = open_in (f ^ ".ml") in
   let outchan = open_out (f ^ ".s") in
   try
-    lexbuf outchan (Lexing.from_channel inchan);
+    lexbuf lexerf parsef outchan (Lexing.from_channel inchan);
     close_in inchan;
     close_out outchan;
   with e -> (close_in inchan; close_out outchan; raise e)

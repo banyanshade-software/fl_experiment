@@ -10,6 +10,7 @@ NCSUFFIX = .opt
 CC = gcc
 CFLAGS = -g -O2 -Wall
 OCAMLLDFLAGS=-warn-error -31
+OCAMLYACC=menhir --infer --external-tokens Tokens #--unused-tokens --explain --fixed-exception
 
 default: debug-code top $(RESULT) do_test
 $(RESULT): debug-code top
@@ -22,6 +23,7 @@ clean:: nobackup
 
 # ↓もし実装を改造したら、それに合わせて変える
 SOURCES = float.c type.ml id.ml m.ml s.ml \
+tokens.ml \
 syntax.ml syntax_ml/mlparser.mly syntax_ml/mllexer.mll \
 syntax_mira/miparser.mly syntax_mira/milexer.mll \
 typing.mli typing.ml kNormal.mli kNormal.ml \
@@ -75,3 +77,6 @@ release: min-caml.html
 	cp Makefile stub.c SPARC/libmincaml.S min-caml.html min-caml.tar.gz ../htdocs/
 
 include OCamlMakefile
+
+sytax_mira/milexer.ml syntax_ml/mllexer.ml: type.cmo tokens.cmo syntax.cmo
+tokens.cmo: id.cmo
