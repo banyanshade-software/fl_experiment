@@ -46,6 +46,12 @@ let string s =
     let p = parsechan Mlparser.exp Mllexer.token lex in
     lexbuf p stdout  (* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)
 
+let file_ast f =
+  let inchan = open_in f in
+  let (lexerf, parsef) = if (Filename.extension f) = ".ml" then (Mllexer.token, Mlparser.exp) else (Milexer.token, Miparser.exp) in
+  let p = parsechan parsef lexerf (Lexing.from_channel inchan) in
+    p
+  
 
 let file f = (* ファイルをコンパイルしてファイルに出力する (caml2html: main_file) *)
   Format.printf "extension '%s'\n" (Filename.extension f);
@@ -70,3 +76,5 @@ let () = (* ここからコンパイラの実行が開始される (caml2html: main_entry) *)
   List.iter
     (fun f -> ignore (file f))
     !files
+
+
