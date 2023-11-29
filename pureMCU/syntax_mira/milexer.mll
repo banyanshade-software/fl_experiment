@@ -58,6 +58,12 @@ rule token = parse
     { COLON2EQ }
 | ':'
     { COLON }
+| _
+    { failwith
+        (Printf.sprintf "(mira) unknown token %s near characters %d-%d"
+           (Lexing.lexeme lexbuf)
+           (Lexing.lexeme_start lexbuf)
+           (Lexing.lexeme_end lexbuf)) }
 and comment = parse
 | "*/" 
     { () }

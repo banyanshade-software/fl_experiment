@@ -10,7 +10,7 @@ NCSUFFIX = .opt
 CC = gcc
 CFLAGS = -g -O2 -Wall
 OCAMLLDFLAGS=-warn-error -31
-OCAMLYACC=menhir --infer --external-tokens Tokens #--unused-tokens --explain --fixed-exception
+OCAMLYACC=menhir --infer --external-tokens Tokens 
 
 default: debug-code top $(RESULT) do_test
 $(RESULT): debug-code top
@@ -26,6 +26,7 @@ SOURCES = float.c type.ml id.ml m.ml s.ml \
 tokens.ml \
 syntax.ml syntax_ml/mlparser.mly syntax_ml/mllexer.mll \
 syntax_mira/miparser.mly syntax_mira/milexer.mll \
+syntax_ml/MlParsingErrors.ml syntax_mira/MiParsingErrors.ml \
 typing.mli typing.ml kNormal.mli kNormal.ml \
 alpha.mli alpha.ml beta.mli beta.ml assoc.mli assoc.ml \
 inline.mli inline.ml constFold.mli constFold.ml elim.mli elim.ml \
@@ -80,3 +81,14 @@ include OCamlMakefile
 
 sytax_mira/milexer.ml syntax_ml/mllexer.ml: type.cmo tokens.cmo syntax.cmo
 tokens.cmo: id.cmo
+
+
+sytax_mira/milexer.ml: syntax_mira/milexer.mll
+syntax_ml/mllexer.ml: syntax_ml/mllexer.mll
+
+syntax_ml/MlParsingErrors.ml: syntax_ml/mlparser.messages syntax_ml/mlparser.mly
+	menhir --compile-errors syntax_ml/mlparser.messages syntax_ml/mlparser.mly > syntax_ml/MlParsingErrors.ml
+
+syntax_mira/MiParsingErrors.ml: syntax_mira/miparser.messages syntax_mira/miparser.mly
+	menhir --compile-errors syntax_mira/miparser.messages syntax_mira/miparser.mly > syntax_mira/MiParsingErrors.ml
+

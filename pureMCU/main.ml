@@ -12,7 +12,21 @@ let parsef = Mlparser.exp
 let lexerf = Mllexer.token
 *)
 
-let lexbuf lexerf parsef outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2html: main_lexbuf) *)
+let print_position lexbuf =
+  let pos = lexbuf.Lexing.lex_curr_p in
+  Format.sprintf "%s:%d:%d" 
+         pos.pos_fname pos.pos_lnum (pos.pos_cnum - pos.pos_bol + 1)
+
+let parsechan parsef lexerf l =
+    try parsef lexerf l with
+    (* | Mlparser.MenhirBasics.Error as e -> Format.printf "basic error at: %s" (print_position l);
+      raise e *)
+    |  _ as e ->  Format.printf "other error at: %s" (print_position l);
+      raise e
+
+
+
+let lexbuf p outchan = (* バッファをコンパイルしてチャンネルへ出力する (caml2html: main_lexbuf) *)
   Id.counter := 0;
   Typing.extenv := M.empty;
   Emit.f outchan
@@ -24,19 +38,23 @@ let lexbuf lexerf parsef outchan l = (* バッファをコンパイルしてチャンネルへ出力
                    (Alpha.f
                       (KNormal.f
                          (Typing.f
-                            (parsef lexerf l)))))))))
+                            (p)))))))))
 
-let string s = lexbuf Mllexer.token Mlparser.exp stdout (Lexing.from_string s) (* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)
+
+let string s = 
+    let lex = Lexing.from_string s in
+    let p = parsechan Mlparser.exp Mllexer.token lex in
+    lexbuf p stdout  (* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)
+
 
 let file f = (* ファイルをコンパイルしてファイルに出力する (caml2html: main_file) *)
-  let open_file f = 
-    let ch = open_in (f ^ ".ml") in
-    if 1=1 then (Mllexer.token, Mlparser.exp, ch) else (Milexer.token, Miparser.exp, open_in (f ^ ".mira")) in
-  let (lexerf, parsef, inchan) = open_file f in
-  let inchan = open_in (f ^ ".ml") in
+  Format.printf "extension '%s'\n" (Filename.extension f);
+  let inchan = open_in f in
+  let (lexerf, parsef) = if (Filename.extension f) = ".ml" then (Mllexer.token, Mlparser.exp) else (Milexer.token, Miparser.exp) in
   let outchan = open_out (f ^ ".s") in
+  let p = parsechan parsef lexerf (Lexing.from_channel inchan) in
   try
-    lexbuf lexerf parsef outchan (Lexing.from_channel inchan);
+    lexbuf p outchan;
     close_in inchan;
     close_out outchan;
   with e -> (close_in inchan; close_out outchan; raise e)

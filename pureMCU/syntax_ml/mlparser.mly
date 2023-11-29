@@ -65,7 +65,7 @@ let get_pos_info pos =
 %%
 
 simple_exp: /* (* 括弧をつけなくても関数の引数になれる式 (caml2html: parser_simple) *) */
-| LPAREN exp RPAREN
+| LPAREN exp1 RPAREN
     { $2 }
 | LPAREN RPAREN
     { Unit }
@@ -77,54 +77,54 @@ simple_exp: /* (* 括弧をつけなくても関数の引数になれる式 (caml2html: parser_simp
     { Float($1) }
 | IDENT
     { Var($1) }
-| simple_exp DOT LPAREN exp RPAREN
+| simple_exp DOT LPAREN exp1 RPAREN
     { Get($1, $4) }
 
-exp: /* (* 一般の式 (caml2html: parser_exp) *) */
-| simple_exp
+exp1: /* (* 一般の式 (caml2html: parser_exp) *) */
+| simple_exp 
     { $1 }
-| NOT exp
+| NOT exp1
     %prec prec_app
     { Not($2) }
-| MINUS exp
+| MINUS exp1
     %prec prec_unary_minus
     { match $2 with
     | Float(f) -> Float(-.f) (* -1.23などは型エラーではないので別扱い *)
     | e -> Neg(e) }
-| exp PLUS exp /* (* 足し算を構文解析するルール (caml2html: parser_add) *) */
+| exp1 PLUS exp1 /* (* 足し算を構文解析するルール (caml2html: parser_add) *) */
     { Add($1, $3) }
-| exp MINUS exp
+| exp1 MINUS exp1
     { Sub($1, $3) }
-| exp EQUAL exp
+| exp1 EQUAL exp1
     { Eq($1, $3) }
-| exp LESS_GREATER exp
+| exp1 LESS_GREATER exp1
     { Not(Eq($1, $3)) (* some float comparisons differ from OCaml for NaN; see: https://github.com/esumii/min-caml/issues/13#issuecomment-1147032750 *) }
-| exp LESS exp
+| exp1 LESS exp1
     { Not(LE($3, $1)) }
-| exp GREATER exp
+| exp1 GREATER exp1
     { Not(LE($1, $3)) }
-| exp LESS_EQUAL exp
+| exp1 LESS_EQUAL exp1
     { LE($1, $3) }
-| exp GREATER_EQUAL exp
+| exp1 GREATER_EQUAL exp1
     { LE($3, $1) }
-| IF exp THEN exp ELSE exp
+| IF exp1 THEN exp1 ELSE exp1
     %prec prec_if
     { If($2, $4, $6) }
-| MINUS_DOT exp
+| MINUS_DOT exp1
     %prec prec_unary_minus
     { FNeg($2) }
-| exp PLUS_DOT exp
+| exp1 PLUS_DOT exp1
     { FAdd($1, $3) }
-| exp MINUS_DOT exp
+| exp1 MINUS_DOT exp1
     { FSub($1, $3) }
-| exp AST_DOT exp
+| exp1 AST_DOT exp1
     { FMul($1, $3) }
-| exp SLASH_DOT exp
+| exp1 SLASH_DOT exp1
     { FDiv($1, $3) }
-| LET IDENT EQUAL exp IN exp
+| LET IDENT EQUAL exp1 IN exp1
     %prec prec_let
     { Let(addtyp $2, $4, $6) }
-| LET REC fundef IN exp
+| LET REC fundef IN exp1
     %prec prec_let
     { LetRec($3, $5) }
 | simple_exp actual_args
@@ -133,11 +133,11 @@ exp: /* (* 一般の式 (caml2html: parser_exp) *) */
 | elems
     %prec prec_tuple
     { Tuple($1) }
-| LET LPAREN pat RPAREN EQUAL exp IN exp
+| LET LPAREN pat RPAREN EQUAL exp1 IN exp1
     { LetTuple($3, $6, $8) }
-| simple_exp DOT LPAREN exp RPAREN LESS_MINUS exp
+| simple_exp DOT LPAREN exp1 RPAREN LESS_MINUS exp1
     { Put($1, $4, $7) }
-| exp SEMICOLON exp
+| exp1 SEMICOLON exp1
     { Let((Id.gentmp Type.Unit, Type.Unit), $1, $3) }
 | ARRAY_CREATE simple_exp simple_exp
     %prec prec_app
@@ -149,8 +149,12 @@ exp: /* (* 一般の式 (caml2html: parser_exp) *) */
         (Printf.sprintf "parse error near line %d pos %d -- line %d pos %d"
            start_line start_char end_line end_char) }
 
+exp:
+| exp1 EOF
+    { $1 }
+
 fundef:
-| IDENT formal_args EQUAL exp
+| IDENT formal_args EQUAL exp1
     { { name = addtyp $1; args = $2; body = $4 } }
 
 formal_args:
@@ -168,9 +172,9 @@ actual_args:
     { [$1] }
 
 elems:
-| elems COMMA exp
+| elems COMMA exp1
     { $1 @ [$3] }
-| exp COMMA exp
+| exp1 COMMA exp1
     { [$1; $3] }
 
 pat:
