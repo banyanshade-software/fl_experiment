@@ -1,0 +1,146 @@
+|| this file is for lex testing only
+||
+|| from ocaml top: 
+||     Main.file_lex "samples/testlex1.mira";;
+||     #quit;;
+
+
+
+|| a comment line
+x = 3
+/* c like comment */
+y = 4
+|| mira like coment
+z = 2
+
+f x = z where z=2
+
+flatten::tree *->[*]
+
+t = [ 1, 2, 3] ++ [4, 5, 6]
+
+testdata = [1..5]++[20,19..16]++[6..10]++[15,14..11]
+
+
+flatten NILT = []
+flatten (NODE a x y) = flatten x ++ [a] ++ flatten y
+
+tree * ::= NILT | NODE * (tree *) (tree *)
+
+build::[*]->tree *
+build = foldr insert NILT
+
+
+|This script generates a solution to the well known Towers of Hanoi
+||problem.  To see the moves (for a game with 12 discs) say
+||  soln
+
+soln = title++hanoi 3 "A" "B" "C"
+title = "SOLUTION TO TOWERS OF HANOI WITH 8 DISCS\n\n"
+hanoi 0 a b c = []
+hanoi (n+1) a b c = hanoi n a c b
+                ++ move a b ++
+                hanoi n c b a
+move a b = "move the top disc from "++a++" to "++b++"\n"
+
+
+||this generates all solutions to the 8 queens problem -- say
+||      solns
+||and it will print the solutions one per line - all 92 of  them.   This
+||is  a  good  program  for testing the garbage collector.  Say `/gc' to
+||switch on garbage collector diagnostics.
+
+solns = layn(map show (queens 8))
+queens 0 = [[]]
+queens (n+1) = [q:b|b<-queens n;q<-[1..8];safe q b]
+safe q b = and[~checks q b i|i<-index b]
+checks q b i = q=b!i \/ abs(q-b!i)=i+1
+
+||Note that the function `queens n' returns a list of all  solutions  to
+||the n queens problem (placing queens in the first n columns of a chess
+||board, so that no queen gives check  to  another).   A  board  with  n
+||queens  is represented as a list of n numbers, namely the positions of
+||the queens in each column
+
+||This  example  exhibits  a  basic   technique   of   lazy   functional
+||programming,  which is to eliminate backtracking from a search problem
+||by working at the level of a list of  all  solutions,  rather  than  a
+||single solution.
+
+
+
+||Miranda programming example - topological sort
+topsort :: [(*,*)] -> [*]
+
+||topsort takes a list of pairs representing a partial  order - where
+||the presence  of (u,v) in the list means that u precedes v in the
+||ordering  -  and  returns  a  total  ordering  consistent   with   the
+||information given - that is if (u,v) is in the input data, then u will
+||come before v in the output list.
+
+topsort rel = tsort (carrier rel) rel
+||the carrier of a relation is the set of all the elements related by it
+
+tsort c r = [], if c=[]
+          = error "inconsistent data for tsort",       if m=[]
+      = a : tsort (c--[a]) [(u,v)|(u,v)<-r; u~=a], otherwise
+            where
+        a = hd m
+        m = (c -- ran r)
+||remarks on the above
+|| - it is an invariant that c contains the carrier of relation r
+|| - m is the set of elements of c with no predecessor in r
+
+||the error case will arise if the input data contains a cycle - i.e.
+||if there is an element that directly or indirectly precedes itself.
+
+||a set is here represented as a list without duplicates
+||the standard function mkset removes duplicates from a list
+
+dom r = mkset [u|(u,v)<-r]  ||domain of a relation
+ran r = mkset [v|(u,v)<-r]  ||range of a relation
+carrier r = union (dom r) (ran r)
+union x y = mkset (x++y)
+
+
+||This script defines stack, as an abstract data type based on lists.
+||Note that there is a show function for stacks, causing them to print
+||in a sensible way.
+
+abstype stack * 
+with empty::stack *; push::*->stack *->stack *;  
+     pop::stack *->stack *; top::stack *->*; isempty::stack *->bool;
+     showstack::(*->[char])->stack *->[char]
+
+stack * == [*]
+empty = []
+push a x = a:x
+pop(a:x) = x
+top(a:x) = a
+isempty x = (x=[])
+showstack f [] = "empty"
+showstack f (a:x) = "(push " ++ f a ++ " " ++ showstack f x ++ ")"
+        
+teststack = push 1(push 2(push 3 empty))
+
+
+|| Here is another sorting algorithm, this time treesort.
+|| to try it out, say:  treesort testdata
+
+tree * ::= NILT | NODE * (tree *) (tree *)
+
+treesort = flatten.build
+
+build::[*]->tree *
+build = foldr insert NILT
+
+insert b NILT = NODE b NILT NILT
+insert b (NODE a x y) = NODE a (insert b x) y, if b<=a
+              = NODE a x (insert b y), if b>a
+
+flatten::tree *->[*]
+flatten NILT = []
+flatten (NODE a x y) = flatten x ++ [a] ++ flatten y
+
+testdata = [1..5]++[20,19..16]++[6..10]++[15,14..11]
+

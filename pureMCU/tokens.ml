@@ -51,3 +51,7 @@ type token =
   | ARROW
   | ARRAY_CREATE
   | ABSTYPE
+  | OR
+  | AND
+  | SUBSCRIPT
+  | LENGTH

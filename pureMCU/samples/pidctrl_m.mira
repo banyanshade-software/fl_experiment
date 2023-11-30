@@ -1,6 +1,4 @@
 || PID control in Miranda
-
-
 pidparam ::= PIDPAR num num num
 
 pidstatus ::= PIDS pidparam num num  num  num 

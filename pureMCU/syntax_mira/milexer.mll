@@ -60,6 +60,14 @@ rule token = parse
     { EQUAL }
 | "<-"
     { LEFTARROW }
+| "<="
+    { LESS_EQUAL }
+| '<' 
+    { LESS }
+| ">="
+    { GREATER_EQUAL }
+| '>'
+    { GREATER }
 | "::="
     { COLCOLEQ }
 | ":="
@@ -68,6 +76,8 @@ rule token = parse
     { COLCOL }
 | ':'
     { COLON }
+| '#'
+    { LENGTH }
 | '*'
     { MULT }
 | ','
@@ -76,6 +86,16 @@ rule token = parse
     { DOTDOT }
 | "."
     { DOT }
+| ';'
+    { COLON }
+| '~'
+    { NOT }
+| "\\/"
+    { OR }
+| '&'
+    { AND }
+| '!'
+    { SUBSCRIPT }
 | '_'
     { IDENT(Id.gentmp Type.Unit) }
 | digit+
