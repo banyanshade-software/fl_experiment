@@ -5,7 +5,6 @@ type token =
   | THEN
   | SLASH_DOT
   | SHOW
-  | SEMICOLON
   | RPAREN
   | LPAREN
   | REC
@@ -15,6 +14,7 @@ type token =
   | OTHERWISE
   | NOT
   | MOD
+  | VBAR
   | MINUS_DOT
   | MINUS
   | LET
@@ -25,20 +25,27 @@ type token =
   | LEFTARROW
   | LBRACKET
   | INT of (int)
+  | STR of (string)
   | IN
   | IF
   | IDENT of (Id.t)
+  | TIDENT of (Id.t)
   | GREATER_EQUAL
   | GREATER
   | FLOAT of (float)
   | EQUAL
   | EOF
   | ELSE
+  | DOTDOT
   | DOT
   | DIV
+  | MULT
   | COMMA
+  | SEMICOLON
   | COLON2EQ
   | COLON
+  | COLCOL
+  | COLCOLEQ
   | BOOL of (bool)
   | AST_DOT
   | ARROW
