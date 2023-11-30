@@ -21,6 +21,8 @@ rule token = parse
 | "(*"
     { comment lexbuf; (* ネストしたコメントのためのトリック *)
       token lexbuf }
+| '='
+    { EQUAL }
 | '('
     { LPAREN }
 | ')'
@@ -47,8 +49,6 @@ rule token = parse
     { AST_DOT }
 | "/."
     { SLASH_DOT }
-| '='
-    { EQUAL }
 | "<>"
     { LESS_GREATER }
 | "<="
@@ -89,10 +89,11 @@ rule token = parse
     { IDENT(Lexing.lexeme lexbuf) }
 | _
     { failwith
-        (Printf.sprintf "unknown token %s near characters %d-%d"
+        (Printf.sprintf "unknown token '%s' near characters %d-%d"
            (Lexing.lexeme lexbuf)
            (Lexing.lexeme_start lexbuf)
            (Lexing.lexeme_end lexbuf)) }
+
 and comment = parse
 | "*)"
     { () }
