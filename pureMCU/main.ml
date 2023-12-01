@@ -46,15 +46,18 @@ let string s =
     let p = parsechan Mlparser.exp Mllexer.token lex in
     lexbuf p stdout  (* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)
 
+(*let lexpar f = if (Filename.extension f) = ".ml" then (Mllexer.token, Mlparser.exp) else (Milexer.token, Miparser.exp)*)
+let lexpar f = if (Filename.extension f) = ".ml" then (Mllexer.token, Mlparser.exp) else (Indenter.token, Miparser.exp)
+
 let file_ast f =
   let inchan = open_in f in
-  let (lexerf, parsef) = if (Filename.extension f) = ".ml" then (Mllexer.token, Mlparser.exp) else (Milexer.token, Miparser.exp) in
+  let (lexerf, parsef) = lexpar f in
   let p = parsechan parsef lexerf (Lexing.from_channel inchan) in
     p
   
 let file_lex f =
   let inchan = open_in f in
-  let (lexerf, _) = if (Filename.extension f) = ".ml" then (Mllexer.token, Mlparser.exp) else (Milexer.token, Miparser.exp) in
+  let (lexerf, _) = lexpar f in
   let l = (Lexing.from_channel inchan) in
   let rec loop r =
     let t = lexerf l in
@@ -65,7 +68,7 @@ let lexer = Mllexer.token
 
 let file_lexer f = 
     let inchan = open_in f in
-    let (lexerf, _) = if (Filename.extension f) = ".ml" then (Mllexer.token, Mlparser.exp) else (Milexer.token, Miparser.exp) in
+    let (lexerf, _) = lexpar f in
     let l = (Lexing.from_channel inchan) in
     lexerf (Lexing.from_channel inchan) 
 

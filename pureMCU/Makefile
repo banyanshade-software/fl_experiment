@@ -25,7 +25,7 @@ clean:: nobackup
 SOURCES = float.c type.ml id.ml m.ml s.ml \
 tokens.ml \
 syntax.ml syntax_ml/mlparser.mly syntax_ml/mllexer.mll \
-syntax_mira/miparser.mly syntax_mira/milexer.mll \
+syntax_mira/miparser.mly syntax_mira/milexer.mll syntax_mira/indenter.ml \
 syntax_ml/MlParsingErrors.ml syntax_mira/MiParsingErrors.ml \
 typing.mli typing.ml kNormal.mli kNormal.ml \
 alpha.mli alpha.ml beta.mli beta.ml assoc.mli assoc.ml \

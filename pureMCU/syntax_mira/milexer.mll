@@ -1,19 +1,30 @@
 {
 open Tokens
 open Type
+
+(* indentation based (INDENT/DEDENT) inspired by 
+    https://github.com/marcelgoh/opythn/blob/master/src/lexer.mll 
+and more :
+    https://gist.github.com/zehnpaard/124a9c6df632839d01b4fede8684ddd8
+
+*)
+
 }
 
 let eol = '\r'? '\n'
+let indent = eol ' '*
 let blank = [' ' '\t']
 let digit = ['0'-'9']
 let lower = ['a'-'z']
 let upper = ['A'-'Z']
 
 rule token = parse
+| indent as s
+    { SPACE (String.length s - 1) }
 | blank+
     { token lexbuf }
 | eol
-    {Lexing.new_line lexbuf; token lexbuf}
+    { Lexing.new_line lexbuf; token lexbuf}
 | "/*"
     { comment lexbuf; token lexbuf }
 | "||"
