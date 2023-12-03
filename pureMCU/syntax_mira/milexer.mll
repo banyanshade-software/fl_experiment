@@ -3,10 +3,10 @@ open Tokens
 open Type
 
 (* indentation based (INDENT/DEDENT) inspired by 
-    https://github.com/marcelgoh/opythn/blob/master/src/lexer.mll 
-and more :
+    hugs98-Sep2006
     https://gist.github.com/zehnpaard/124a9c6df632839d01b4fede8684ddd8
-
+and (but not really) :
+    https://github.com/marcelgoh/opythn/blob/master/src/lexer.mll 
 *)
 
 }
@@ -20,7 +20,7 @@ let upper = ['A'-'Z']
 
 rule token = parse
 | indent as s
-    { SPACE (String.length s - 1) }
+    { Lexing.new_line lexbuf; SPACE (String.length s - 1) }
 | blank+
     { token lexbuf }
 | eol

@@ -6,13 +6,17 @@ type token =
   | BR
   | WITH
   | WHERE
+  | OF
   | THEN
   | SLASH_DOT
   | SHOW
   | RPAREN
   | LPAREN
-  | REC
+  | LBRACKET
   | RBRACKET
+  | LBRACE
+  | RBRACE
+  | REC
   | PLUS_DOT
   | PLUS
   | OTHERWISE
@@ -27,7 +31,6 @@ type token =
   | LESS_EQUAL
   | LESS
   | LEFTARROW
-  | LBRACKET
   | INT of (int)
   | STR of (string)
   | IN
