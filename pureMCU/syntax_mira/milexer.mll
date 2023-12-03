@@ -134,6 +134,9 @@ and comment = parse
 | "/*"
     { comment lexbuf;
       comment lexbuf }
+| eol
+    { Lexing.new_line lexbuf;
+      comment lexbuf }
 | eof
     { Format.eprintf "warning: unterminated comment@." }
 | _
@@ -141,7 +144,7 @@ and comment = parse
 
 and commentline = parse
  eol
-    { () }
+    { Lexing.new_line lexbuf; () }
 | _
     { commentline lexbuf }
 

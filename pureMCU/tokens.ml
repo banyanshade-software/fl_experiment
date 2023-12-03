@@ -1,8 +1,6 @@
 
 type token = 
   | SPACE of int
-  | INDENT
-  | DEDENT
   | BR
   | WITH
   | WHERE
