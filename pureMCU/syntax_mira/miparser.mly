@@ -1,3 +1,5 @@
+(* https://www.haskell.org/onlinereport/syntax-iso.html *)
+(* hugs98 *)
 %{
 open Syntax
 let addtyp x = (x, Type.gentyp ())
