@@ -2,6 +2,7 @@
 type token = 
   | SPACE of int
   | BR
+  | UNDERSCORE
   | WITH
   | WHERE
   | OF

@@ -108,7 +108,7 @@ rule token = parse
 | '!'
     { SUBSCRIPT }
 | '_'
-    { IDENT(Id.gentmp Type.Unit) }
+    { UNDERSCORE }
 | digit+
     { INT(int_of_string(Lexing.lexeme lexbuf)) }
 | digit+ ('.' digit*)? (['e' 'E'] ['+' '-']? digit+)?

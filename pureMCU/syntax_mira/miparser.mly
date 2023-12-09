@@ -13,9 +13,11 @@ let get_pos_info pos =
 %token <int> INT
 %token <float> FLOAT
 %token MOD
+%token COCO
 %token SHOW
 %token WITH
 %token OTHERWISE
+%token UNDERSCORE
 %token WHERE
 %token ABSTYPE
 %token NOT
@@ -48,6 +50,8 @@ let get_pos_info pos =
 %token RPAREN
 %token LBRACKET
 %token RBRACKET
+%token LBRACE
+%token RBRACE
 %token ARROW
 %token LEFTARROW
 %token COLON2EQ
@@ -119,5 +123,62 @@ funlhs:
 (*| npk             { $1 } var '+' UMLIT *)
 
 
+typed:
+| type1         { $1 }
+| btype2        { $1 }
 
+type1:
+| btype1                    {}
+| bpolyType ARROW typed     {}
+| btype1    ARROW typed     {}
+| btype2    ARROW typed     {}
 
+btype:
+| btype1                    {}
+| btype2                    {}
+
+btype1: 
+| btype1 atype              {}
+| atype1                    {}
+
+btype2: 
+| btype2 atype              {}
+| qconid                    {}
+
+atype:
+| atype1                    {}
+| qconid                    {}
+
+atype1:
+| varid
+| LPAREN RPAREN                         {}
+| LPAREN type1 RPAREN                   {}
+| LPAREN btype2 RPAREN                  {}
+| LPAREN tupCommas RPAREN               {}
+| LPAREN btypes2 RPAREN                 {}
+| LPAREN typeTuple RPAREN               {}
+| LPAREN tfields RPAREN                 {}
+| LPAREN tfields PIPE typed RPAREN      {}
+| LBRACKET typed RBRACKET               {}
+| LBRACKET RBRACKET                     {}
+| UNDERSCORE                            {}
+
+btypes2:
+| btypes2 COMMA btype2                  {}
+| btype2 COMMA btype2                   {}
+
+tfields:
+| tfields COMMA tfield                  {}
+| tfield                                {}
+
+tfield:
+| varid COCO typed                      {}
+
+numlit:
+| INT                                   {}
+| FLOAT                                 {}
+
+pat0:
+| var                                   {}
+| numlit                                {}
+| pat0_vI                               {}
