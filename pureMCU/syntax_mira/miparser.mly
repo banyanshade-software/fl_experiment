@@ -83,3 +83,9 @@ simple_exp:
 exp:
 | simple_exp
     { $1 }
+
+topDecls:
+| topDecl
+| topDecl topDecls
+
+topDecl:
