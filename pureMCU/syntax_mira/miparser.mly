@@ -85,7 +85,37 @@ exp:
     { $1 }
 
 topDecls:
-| topDecl
+| topDecl   
+    { $1 }
 | topDecl topDecls
+    { $1 }
 
 topDecl:
+| decl       { $1 }
+
+decls:
+| LBRACE decls1 RBRACE
+    { $2 }
+
+decls1:
+| decls0 decl
+    { $1 }
+
+decl:
+| gendecl
+    { $1 }
+| funlhs rhs
+    { $1 }
+| funlhs COCO typed rhs
+    { $1 }
+| pat0 rhs
+    { $1 }
+
+funlhs:
+| funlhs0         { $1 }
+| funlhs1         { $1 }
+(*| npk             { $1 } var '+' UMLIT *)
+
+
+
+
