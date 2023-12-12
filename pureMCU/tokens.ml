@@ -2,7 +2,11 @@
 type token = 
   | SPACE of int
   | BR
+  | CASE
+  | ANTISLASH
   | UNDERSCORE
+  | AROBAS
+  | BACKQUOTE
   | WITH
   | WHERE
   | OF

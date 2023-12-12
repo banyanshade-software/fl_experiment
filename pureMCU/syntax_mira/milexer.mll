@@ -33,6 +33,8 @@ rule token = parse
     {  STR (stringval (Buffer.create 100) lexbuf) }
 | '|'
     { VBAR }
+| '@'
+    { AROBAS }
 | "where"
     { WHERE }
 | "abstype"
@@ -53,6 +55,10 @@ rule token = parse
     { BOOL(false) }
 | "with"
     { WITH }
+| "case"
+    { CASE }
+| "of"
+    { OF }
 | '('
     { LPAREN }
 | ')'
@@ -67,6 +73,8 @@ rule token = parse
     { MINUS }
 | '+'
     { PLUS }
+| "=>"
+    { IMPLIES }
 | '='
     { EQUAL }
 | "<-"
@@ -103,10 +111,14 @@ rule token = parse
     { NOT }
 | "\\/"
     { OR }
+| '\\'
+    { ANTISLASH}
 | '&'
     { AND }
 | '!'
     { SUBSCRIPT }
+| '`'
+    { BACKQUOTE }
 | '_'
     { UNDERSCORE }
 | digit+
