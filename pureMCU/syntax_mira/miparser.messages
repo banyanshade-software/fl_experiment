@@ -1,0 +1,2096 @@
+topDecls: WITH
+##
+## Ends in an error in state: 0.
+##
+## topDecls' -> . topDecls [ # ]
+##
+## The known suffix of the stack is as follows:
+##
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: LBRACE WITH
+##
+## Ends in an error in state: 3.
+##
+## funlhs1 -> LBRACE . funlhs0 RBRACE [ VBAR UNDERSCORE STR RBRACE INT IDENT FLOAT EQUAL COLCOL ]
+## funlhs1 -> LBRACE . funlhs1 RBRACE [ VBAR UNDERSCORE STR RBRACE INT IDENT FLOAT EQUAL COLCOL ]
+##
+## The known suffix of the stack is as follows:
+## LBRACE
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: LBRACE IDENT WITH
+##
+## Ends in an error in state: 8.
+##
+## apat -> var . [ UNDERSCORE STR PLUS MINUS INT IDENT FLOAT ]
+## apat_vI -> var . AROBAS apat [ UNDERSCORE STR PLUS MINUS INT IDENT FLOAT ]
+## funlhs0 -> var . PLUS pat0_INT [ RBRACE ]
+## funlhs1 -> var . apat [ UNDERSCORE STR RBRACE INT IDENT FLOAT ]
+##
+## The known suffix of the stack is as follows:
+## var
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT PLUS WITH
+##
+## Ends in an error in state: 9.
+##
+## funlhs0 -> var PLUS . pat0_INT [ VBAR RBRACE EQUAL COLCOL ]
+##
+## The known suffix of the stack is as follows:
+## var PLUS
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT PLUS IDENT WITH
+##
+## Ends in an error in state: 10.
+##
+## apat -> var . [ VBAR UNDERSCORE STR RBRACE INT IDENT FLOAT EQUAL COLCOL ]
+## apat_vI -> var . AROBAS apat [ VBAR UNDERSCORE STR RBRACE INT IDENT FLOAT EQUAL COLCOL ]
+## pat0_INT -> var . [ VBAR RBRACE EQUAL COLCOL ]
+##
+## The known suffix of the stack is as follows:
+## var
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT AROBAS WITH
+##
+## Ends in an error in state: 11.
+##
+## apat_vI -> var AROBAS . apat [ VBAR UNDERSCORE STR RBRACE PLUS MINUS INT IDENT FLOAT EQUAL COLCOL ARROW ]
+##
+## The known suffix of the stack is as follows:
+## var AROBAS
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT IDENT WITH
+##
+## Ends in an error in state: 12.
+##
+## apat -> var . [ VBAR UNDERSCORE STR RBRACE PLUS MINUS INT IDENT FLOAT EQUAL COLCOL ARROW ]
+## apat_vI -> var . AROBAS apat [ VBAR UNDERSCORE STR RBRACE PLUS MINUS INT IDENT FLOAT EQUAL COLCOL ARROW ]
+##
+## The known suffix of the stack is as follows:
+## var
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: STR WITH
+##
+## Ends in an error in state: 21.
+##
+## apat -> apat_vI . [ VBAR UNDERSCORE STR RBRACE PLUS MINUS INT IDENT FLOAT EQUAL COLCOL ARROW ]
+## pat10_vI -> apat_vI . [ VBAR RBRACE PLUS MINUS EQUAL COLCOL ARROW ]
+##
+## The known suffix of the stack is as follows:
+## apat_vI
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT STR WITH
+##
+## Ends in an error in state: 22.
+##
+## nonempty_list(apat) -> apat . [ VBAR RBRACE PLUS MINUS EQUAL COLCOL ARROW ]
+## nonempty_list(apat) -> apat . nonempty_list(apat) [ VBAR RBRACE PLUS MINUS EQUAL COLCOL ARROW ]
+##
+## The known suffix of the stack is as follows:
+## apat
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: LBRACE STR VBAR
+##
+## Ends in an error in state: 25.
+##
+## funlhs0 -> pat10_vI . varop pat0 [ RBRACE ]
+##
+## The known suffix of the stack is as follows:
+## pat10_vI
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 21, spurious reduction of production pat10_vI -> apat_vI
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: STR PLUS WITH
+##
+## Ends in an error in state: 28.
+##
+## funlhs0 -> pat10_vI varop . pat0 [ VBAR RBRACE EQUAL COLCOL ]
+##
+## The known suffix of the stack is as follows:
+## pat10_vI varop
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT MINUS IDENT WITH
+##
+## Ends in an error in state: 29.
+##
+## apat -> var . [ VBAR UNDERSCORE STR RBRACE INT IDENT FLOAT EQUAL COLCOL ]
+## apat_vI -> var . AROBAS apat [ VBAR UNDERSCORE STR RBRACE INT IDENT FLOAT EQUAL COLCOL ]
+## pat0 -> var . [ VBAR RBRACE EQUAL COLCOL ]
+##
+## The known suffix of the stack is as follows:
+## var
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT MINUS FLOAT WITH
+##
+## Ends in an error in state: 32.
+##
+## apat -> numlit . [ VBAR UNDERSCORE STR RBRACE INT IDENT FLOAT EQUAL COLCOL ARROW ]
+## pat0 -> numlit . [ VBAR RBRACE EQUAL COLCOL ARROW ]
+##
+## The known suffix of the stack is as follows:
+## numlit
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: LBRACE FLOAT WITH
+##
+## Ends in an error in state: 33.
+##
+## apat -> numlit . [ UNDERSCORE STR PLUS MINUS INT IDENT FLOAT ]
+## funlhs0 -> numlit . varop pat0 [ RBRACE ]
+##
+## The known suffix of the stack is as follows:
+## numlit
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT MINUS WITH
+##
+## Ends in an error in state: 34.
+##
+## funlhs0 -> numlit varop . pat0 [ VBAR RBRACE EQUAL COLCOL ]
+##
+## The known suffix of the stack is as follows:
+## numlit varop
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: LBRACE IDENT STR WITH
+##
+## Ends in an error in state: 36.
+##
+## funlhs1 -> LBRACE funlhs1 . RBRACE [ VBAR UNDERSCORE STR RBRACE INT IDENT FLOAT EQUAL COLCOL ]
+## funlhs1 -> funlhs1 . apat [ UNDERSCORE STR RBRACE INT IDENT FLOAT ]
+##
+## The known suffix of the stack is as follows:
+## LBRACE funlhs1
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: LBRACE FLOAT MINUS FLOAT ARROW
+##
+## Ends in an error in state: 39.
+##
+## funlhs1 -> LBRACE funlhs0 . RBRACE [ VBAR UNDERSCORE STR RBRACE INT IDENT FLOAT EQUAL COLCOL ]
+##
+## The known suffix of the stack is as follows:
+## LBRACE funlhs0
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 32, spurious reduction of production pat0 -> numlit
+## In state 35, spurious reduction of production funlhs0 -> numlit varop pat0
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COMMA IDENT WITH
+##
+## Ends in an error in state: 41.
+##
+## gendecl -> vars . COLCOL topType [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+## vars -> vars . COMMA var [ COMMA COLCOL ]
+##
+## The known suffix of the stack is as follows:
+## vars
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COMMA WITH
+##
+## Ends in an error in state: 42.
+##
+## vars -> vars COMMA . var [ COMMA COLCOL ]
+##
+## The known suffix of the stack is as follows:
+## vars COMMA
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL WITH
+##
+## Ends in an error in state: 44.
+##
+## gendecl -> vars COLCOL . topType [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## vars COLCOL
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN WITH
+##
+## Ends in an error in state: 46.
+##
+## atype1 -> LPAREN . RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . type1 RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . btype2 RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . tupCommas RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . btypes2 RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . typeTuple RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . tfields RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . tfields VBAR typed RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## context -> LPAREN . RPAREN [ IMPLIES ]
+## context -> LPAREN . btype2 RPAREN [ IMPLIES ]
+## context -> LPAREN . btypes2 RPAREN [ IMPLIES ]
+## context -> LPAREN . lacks1 RPAREN [ IMPLIES ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN RPAREN WITH
+##
+## Ends in an error in state: 47.
+##
+## atype1 -> LPAREN RPAREN . [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## context -> LPAREN RPAREN . [ IMPLIES ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN RPAREN
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT STR COLCOL LPAREN WITH
+##
+## Ends in an error in state: 48.
+##
+## atype1 -> LPAREN . RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . type1 RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . btype2 RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . tupCommas RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . btypes2 RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . typeTuple RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . tfields RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN . tfields VBAR typed RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LBRACKET WITH
+##
+## Ends in an error in state: 50.
+##
+## atype1 -> LBRACKET . typed RBRACKET [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LBRACKET . RBRACKET [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## LBRACKET
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LBRACKET IDENT WHERE
+##
+## Ends in an error in state: 53.
+##
+## atype1 -> LBRACKET typed . RBRACKET [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## LBRACKET typed
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 59, spurious reduction of production type1 -> btype1
+## In state 55, spurious reduction of production typed -> type1
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT STR COLCOL IDENT WITH
+##
+## Ends in an error in state: 59.
+##
+## btype1 -> btype1 . atype [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## type1 -> btype1 . [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## type1 -> btype1 . ARROW typed [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## btype1
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT STR COLCOL IDENT ARROW WITH
+##
+## Ends in an error in state: 60.
+##
+## type1 -> btype1 ARROW . typed [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## btype1 ARROW
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT STR COLCOL LPAREN IDENT WITH
+##
+## Ends in an error in state: 67.
+##
+## atype1 -> varid . [ UNDERSCORE RPAREN LPAREN LBRACKET IDENT COMMA ARROW ]
+## tfield -> varid . COLCOL typed [ VBAR RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## varid
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN IDENT COLCOL WITH
+##
+## Ends in an error in state: 68.
+##
+## tfield -> varid COLCOL . typed [ VBAR RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## varid COLCOL
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN IDENT COMMA IDENT WHERE
+##
+## Ends in an error in state: 70.
+##
+## atype1 -> LPAREN typeTuple . RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## typeTuple -> typeTuple . COMMA typed [ RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN typeTuple
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 59, spurious reduction of production type1 -> btype1
+## In state 55, spurious reduction of production typed -> type1
+## In state 77, spurious reduction of production typeTuple -> type1 COMMA typed
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN IDENT COMMA IDENT COMMA WITH
+##
+## Ends in an error in state: 72.
+##
+## typeTuple -> typeTuple COMMA . typed [ RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## typeTuple COMMA
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN UNDERSCORE WHERE
+##
+## Ends in an error in state: 74.
+##
+## atype1 -> LPAREN type1 . RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## typeTuple -> type1 . COMMA typed [ RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN type1
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 59, spurious reduction of production type1 -> btype1
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN IDENT COMMA WITH
+##
+## Ends in an error in state: 76.
+##
+## typeTuple -> type1 COMMA . typed [ RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## type1 COMMA
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN COMMA WITH
+##
+## Ends in an error in state: 78.
+##
+## atype1 -> LPAREN tupCommas . RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## tupCommas -> tupCommas . COMMA [ RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN tupCommas
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN IDENT COLCOL IDENT WHERE
+##
+## Ends in an error in state: 81.
+##
+## atype1 -> LPAREN tfields . RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## atype1 -> LPAREN tfields . VBAR typed RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## tfields -> tfields . COMMA tfield [ VBAR RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN tfields
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 59, spurious reduction of production type1 -> btype1
+## In state 55, spurious reduction of production typed -> type1
+## In state 69, spurious reduction of production tfield -> varid COLCOL typed
+## In state 89, spurious reduction of production tfields -> tfield
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN IDENT COLCOL IDENT VBAR WITH
+##
+## Ends in an error in state: 82.
+##
+## atype1 -> LPAREN tfields VBAR . typed RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN tfields VBAR
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN IDENT COLCOL IDENT VBAR IDENT WHERE
+##
+## Ends in an error in state: 83.
+##
+## atype1 -> LPAREN tfields VBAR typed . RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IMPLIES IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN tfields VBAR typed
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 59, spurious reduction of production type1 -> btype1
+## In state 55, spurious reduction of production typed -> type1
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN IDENT COLCOL IDENT COMMA WITH
+##
+## Ends in an error in state: 86.
+##
+## tfields -> tfields COMMA . tfield [ VBAR RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## tfields COMMA
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN IDENT COLCOL IDENT COMMA IDENT WITH
+##
+## Ends in an error in state: 87.
+##
+## tfield -> varid . COLCOL typed [ VBAR RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## varid
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN IDENT WITH
+##
+## Ends in an error in state: 100.
+##
+## atype1 -> varid . [ UNDERSCORE RPAREN LPAREN LBRACKET IDENT COMMA ARROW ]
+## lacks -> varid . ANTISLASH varid [ RPAREN COMMA ]
+## tfield -> varid . COLCOL typed [ VBAR RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## varid
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL IDENT ANTISLASH WITH
+##
+## Ends in an error in state: 101.
+##
+## lacks -> varid ANTISLASH . varid [ RPAREN IMPLIES COMMA ]
+##
+## The known suffix of the stack is as follows:
+## varid ANTISLASH
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN IDENT ANTISLASH IDENT WITH
+##
+## Ends in an error in state: 103.
+##
+## context -> LPAREN lacks1 . RPAREN [ IMPLIES ]
+## lacks1 -> lacks1 . COMMA btypes2 [ RPAREN COMMA ]
+## lacks1 -> lacks1 . COMMA lacks [ RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN lacks1
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN IDENT ANTISLASH IDENT COMMA WITH
+##
+## Ends in an error in state: 105.
+##
+## lacks1 -> lacks1 COMMA . btypes2 [ RPAREN COMMA ]
+## lacks1 -> lacks1 COMMA . lacks [ RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## lacks1 COMMA
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN IDENT ANTISLASH IDENT COMMA IDENT WITH
+##
+## Ends in an error in state: 106.
+##
+## lacks -> varid . ANTISLASH varid [ RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## varid
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL IDENT WITH
+##
+## Ends in an error in state: 116.
+##
+## atype1 -> varid . [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LPAREN LEFTARROW LBRACKET LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## lacks -> varid . ANTISLASH varid [ RPAREN IMPLIES COMMA ]
+##
+## The known suffix of the stack is as follows:
+## varid
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL IDENT ANTISLASH IDENT WITH
+##
+## Ends in an error in state: 126.
+##
+## topType0 -> context . IMPLIES topType1 [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## context
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL LPAREN RPAREN IMPLIES WITH
+##
+## Ends in an error in state: 127.
+##
+## topType0 -> context IMPLIES . topType1 [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## context IMPLIES
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL UNDERSCORE WITH
+##
+## Ends in an error in state: 132.
+##
+## btype -> btype1 . [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+## btype1 -> btype1 . atype [ UNDERSCORE STR SEMICOLON RBRACE LPAREN LBRACKET LBRACE INT IDENT FLOAT ARROW # ]
+## topType1 -> btype1 . ARROW topType1 [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## btype1
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT COLCOL IDENT ARROW WITH
+##
+## Ends in an error in state: 133.
+##
+## topType1 -> btype1 ARROW . topType1 [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## btype1 ARROW
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT WITH
+##
+## Ends in an error in state: 137.
+##
+## apat -> var . [ VBAR UNDERSCORE STR PLUS MINUS INT IDENT FLOAT EQUAL ]
+## apat_vI -> var . AROBAS apat [ VBAR UNDERSCORE STR PLUS MINUS INT IDENT FLOAT EQUAL ]
+## funlhs0 -> var . PLUS pat0_INT [ VBAR EQUAL COLCOL ]
+## funlhs1 -> var . apat [ VBAR UNDERSCORE STR INT IDENT FLOAT EQUAL COLCOL ]
+## pat0 -> var . [ VBAR EQUAL ]
+## vars -> var . [ COMMA COLCOL ]
+##
+## The known suffix of the stack is as follows:
+## var
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL FLOAT SEMICOLON
+##
+## Ends in an error in state: 139.
+##
+## nonempty_list(topDecl) -> topDecl . [ # ]
+## nonempty_list(topDecl) -> topDecl . nonempty_list(topDecl) [ # ]
+##
+## The known suffix of the stack is as follows:
+## topDecl
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+## In state 279, spurious reduction of production rhs1 -> EQUAL exp
+## In state 282, spurious reduction of production wherePart ->
+## In state 283, spurious reduction of production rhs -> rhs1 wherePart
+## In state 316, spurious reduction of production decl -> pat0 rhs
+## In state 318, spurious reduction of production topDecl -> decl
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: STR RBRACE
+##
+## Ends in an error in state: 140.
+##
+## funlhs0 -> pat10_vI . varop pat0 [ VBAR EQUAL COLCOL ]
+## pat0_vI -> pat10_vI . [ VBAR EQUAL ]
+##
+## The known suffix of the stack is as follows:
+## pat10_vI
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 21, spurious reduction of production pat10_vI -> apat_vI
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT VBAR WITH
+##
+## Ends in an error in state: 142.
+##
+## gddef -> VBAR . exp0 EQUAL exp [ WHERE VBAR UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## VBAR
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL MINUS WITH
+##
+## Ends in an error in state: 145.
+##
+## infixExpa -> MINUS . exp10a [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## infixExpb -> MINUS . exp10b [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## MINUS
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LPAREN WITH
+##
+## Ends in an error in state: 146.
+##
+## aexp -> LPAREN . exp RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## aexp -> LPAREN . exps2 RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## aexp -> LPAREN . vfields RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## aexp -> LPAREN . vfields VBAR exp RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LET WITH
+##
+## Ends in an error in state: 147.
+##
+## exp10b -> LET . ldecls IN exp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## LET
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LET LBRACE IDENT COLCOL IDENT STR
+##
+## Ends in an error in state: 149.
+##
+## ldecls -> LBRACE ldecls1 . RBRACE [ IN ]
+## ldecls0 -> ldecls1 . SEMICOLON [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT ]
+##
+## The known suffix of the stack is as follows:
+## LBRACE ldecls1
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 116, spurious reduction of production atype1 -> varid
+## In state 62, spurious reduction of production btype1 -> atype1
+## In state 132, spurious reduction of production btype -> btype1
+## In state 135, spurious reduction of production topType1 -> btype
+## In state 122, spurious reduction of production topType0 -> topType1
+## In state 123, spurious reduction of production topType -> topType0
+## In state 124, spurious reduction of production gendecl -> vars COLCOL topType
+## In state 157, spurious reduction of production decl -> gendecl
+## In state 289, spurious reduction of production ldecl -> decl
+## In state 156, spurious reduction of production ldecls1 -> ldecls0 ldecl
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LET LBRACE WITH
+##
+## Ends in an error in state: 152.
+##
+## ldecls -> LBRACE ldecls0 . RBRACE [ IN ]
+## ldecls0 -> ldecls0 . SEMICOLON [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT ]
+## ldecls1 -> ldecls0 . ldecl [ SEMICOLON RBRACE ]
+##
+## The known suffix of the stack is as follows:
+## LBRACE ldecls0
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT WITH
+##
+## Ends in an error in state: 155.
+##
+## apat -> numlit . [ VBAR UNDERSCORE STR PLUS MINUS INT IDENT FLOAT EQUAL ]
+## funlhs0 -> numlit . varop pat0 [ VBAR EQUAL COLCOL ]
+## pat0 -> numlit . [ VBAR EQUAL ]
+##
+## The known suffix of the stack is as follows:
+## numlit
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT STR WITH
+##
+## Ends in an error in state: 158.
+##
+## funlhs -> funlhs1 . [ VBAR EQUAL COLCOL ]
+## funlhs1 -> funlhs1 . apat [ VBAR UNDERSCORE STR INT IDENT FLOAT EQUAL COLCOL ]
+##
+## The known suffix of the stack is as follows:
+## funlhs1
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT MINUS FLOAT ARROW
+##
+## Ends in an error in state: 160.
+##
+## decl -> funlhs . rhs [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+## decl -> funlhs . COLCOL typed rhs [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## funlhs
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 32, spurious reduction of production pat0 -> numlit
+## In state 35, spurious reduction of production funlhs0 -> numlit varop pat0
+## In state 159, spurious reduction of production funlhs -> funlhs0
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL WITH
+##
+## Ends in an error in state: 161.
+##
+## rhs1 -> EQUAL . exp [ WHERE UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## EQUAL
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET WITH
+##
+## Ends in an error in state: 162.
+##
+## aexp -> LBRACKET . listd RBRACKET [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+##
+## The known suffix of the stack is as follows:
+## LBRACKET
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL IF WITH
+##
+## Ends in an error in state: 163.
+##
+## exp10b -> IF . exp THEN exp ELSE exp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## IF
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE WITH
+##
+## Ends in an error in state: 164.
+##
+## exp10a -> CASE . exp OF LBRACE alts RBRACE [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+##
+## The known suffix of the stack is as follows:
+## CASE
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL ANTISLASH WITH
+##
+## Ends in an error in state: 165.
+##
+## exp10b -> ANTISLASH . pats ARROW exp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## ANTISLASH
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL ANTISLASH STR WITH
+##
+## Ends in an error in state: 166.
+##
+## exp10b -> ANTISLASH pats . ARROW exp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## pats -> pats . apat [ UNDERSCORE STR INT IDENT FLOAT ARROW ]
+##
+## The known suffix of the stack is as follows:
+## ANTISLASH pats
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL ANTISLASH STR ARROW WITH
+##
+## Ends in an error in state: 167.
+##
+## exp10b -> ANTISLASH pats ARROW . exp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## ANTISLASH pats ARROW
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL IDENT WITH
+##
+## Ends in an error in state: 169.
+##
+## aexp -> qvar . [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## aexp -> qvar . AROBAS aexp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+##
+## The known suffix of the stack is as follows:
+## qvar
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL IDENT AROBAS WITH
+##
+## Ends in an error in state: 170.
+##
+## aexp -> qvar AROBAS . aexp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+##
+## The known suffix of the stack is as follows:
+## qvar AROBAS
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL MINUS CASE FLOAT OF LBRACE IDENT ARROW FLOAT RBRACE WITH
+##
+## Ends in an error in state: 174.
+##
+## exp0a -> infixExpa . [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL ARROW # ]
+## infixExpa -> infixExpa . qop MINUS exp10a [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## infixExpa -> infixExpa . qop exp10a [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## infixExpb -> infixExpa . qop MINUS exp10b [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## infixExpb -> infixExpa . qop exp10b [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## infixExpa
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL MINUS FLOAT MINUS WITH
+##
+## Ends in an error in state: 177.
+##
+## infixExpa -> infixExpa qop . MINUS exp10a [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## infixExpa -> infixExpa qop . exp10a [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## infixExpb -> infixExpa qop . MINUS exp10b [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## infixExpb -> infixExpa qop . exp10b [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## infixExpa qop
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL MINUS FLOAT MINUS MINUS WITH
+##
+## Ends in an error in state: 178.
+##
+## infixExpa -> infixExpa qop MINUS . exp10a [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## infixExpb -> infixExpa qop MINUS . exp10b [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## infixExpa qop MINUS
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL FLOAT WITH
+##
+## Ends in an error in state: 181.
+##
+## appExp -> appExp . aexp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## exp10a -> appExp . [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+##
+## The known suffix of the stack is as follows:
+## appExp
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE IDENT ARROW FLOAT RBRACE WITH
+##
+## Ends in an error in state: 190.
+##
+## exp0a -> exp10a . [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL ARROW # ]
+## infixExpa -> exp10a . qop MINUS exp10a [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## infixExpa -> exp10a . qop exp10a [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## infixExpb -> exp10a . qop MINUS exp10b [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## infixExpb -> exp10a . qop exp10b [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## exp10a
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL FLOAT MINUS WITH
+##
+## Ends in an error in state: 191.
+##
+## infixExpa -> exp10a qop . MINUS exp10a [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## infixExpa -> exp10a qop . exp10a [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## infixExpb -> exp10a qop . MINUS exp10b [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+## infixExpb -> exp10a qop . exp10b [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## exp10a qop
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL FLOAT MINUS MINUS WITH
+##
+## Ends in an error in state: 192.
+##
+## infixExpa -> exp10a qop MINUS . exp10a [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## infixExpb -> exp10a qop MINUS . exp10b [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## exp10a qop MINUS
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL FLOAT COLCOL WITH
+##
+## Ends in an error in state: 199.
+##
+## exp_err -> exp0a COLCOL . sigType [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## exp0a COLCOL
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL FLOAT COLCOL IDENT ANTISLASH IDENT WITH
+##
+## Ends in an error in state: 202.
+##
+## sigType -> context . IMPLIES typed [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## context
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL FLOAT COLCOL LPAREN RPAREN IMPLIES WITH
+##
+## Ends in an error in state: 203.
+##
+## sigType -> context IMPLIES . typed [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## context IMPLIES
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT ARROW
+##
+## Ends in an error in state: 210.
+##
+## exp10a -> CASE exp . OF LBRACE alts RBRACE [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+##
+## The known suffix of the stack is as follows:
+## CASE exp
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF WITH
+##
+## Ends in an error in state: 211.
+##
+## exp10a -> CASE exp OF . LBRACE alts RBRACE [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+##
+## The known suffix of the stack is as follows:
+## CASE exp OF
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE WITH
+##
+## Ends in an error in state: 212.
+##
+## exp10a -> CASE exp OF LBRACE . alts RBRACE [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+##
+## The known suffix of the stack is as follows:
+## CASE exp OF LBRACE
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE COLON WITH
+##
+## Ends in an error in state: 213.
+##
+## alts -> COLON . alts [ RBRACE ]
+##
+## The known suffix of the stack is as follows:
+## COLON
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE IDENT WITH
+##
+## Ends in an error in state: 214.
+##
+## apat -> var . [ VBAR UNDERSCORE STR INT IDENT FLOAT COLCOL ARROW ]
+## apat_vI -> var . AROBAS apat [ VBAR UNDERSCORE STR INT IDENT FLOAT COLCOL ARROW ]
+## npk -> var . PLUS numlit [ VBAR ARROW ]
+## pat0 -> var . [ VBAR COLCOL ARROW ]
+##
+## The known suffix of the stack is as follows:
+## var
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE IDENT PLUS WITH
+##
+## Ends in an error in state: 215.
+##
+## npk -> var PLUS . numlit [ VBAR ARROW ]
+##
+## The known suffix of the stack is as follows:
+## var PLUS
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE FLOAT RBRACE
+##
+## Ends in an error in state: 218.
+##
+## pat_npk -> pat0 . COLCOL typed [ VBAR ARROW ]
+## pat_npk -> pat0 . [ VBAR ARROW ]
+##
+## The known suffix of the stack is as follows:
+## pat0
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 32, spurious reduction of production pat0 -> numlit
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE IDENT COLCOL WITH
+##
+## Ends in an error in state: 219.
+##
+## pat_npk -> pat0 COLCOL . typed [ VBAR ARROW ]
+##
+## The known suffix of the stack is as follows:
+## pat0 COLCOL
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE IDENT PLUS FLOAT WITH
+##
+## Ends in an error in state: 221.
+##
+## alt -> pat . altRhs wherePart [ RBRACE COLON ]
+##
+## The known suffix of the stack is as follows:
+## pat
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE IDENT VBAR WITH
+##
+## Ends in an error in state: 222.
+##
+## guardAlt -> VBAR . exp0 ARROW exp [ WHERE VBAR RBRACE COLON ]
+##
+## The known suffix of the stack is as follows:
+## VBAR
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE IDENT VBAR FLOAT COLCOL
+##
+## Ends in an error in state: 224.
+##
+## guardAlt -> VBAR exp0 . ARROW exp [ WHERE VBAR RBRACE COLON ]
+##
+## The known suffix of the stack is as follows:
+## VBAR exp0
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 223, spurious reduction of production exp0 -> exp0a
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE IDENT VBAR FLOAT ARROW WITH
+##
+## Ends in an error in state: 225.
+##
+## guardAlt -> VBAR exp0 ARROW . exp [ WHERE VBAR RBRACE COLON ]
+##
+## The known suffix of the stack is as follows:
+## VBAR exp0 ARROW
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE IDENT ARROW WITH
+##
+## Ends in an error in state: 227.
+##
+## altRhs -> ARROW . exp [ WHERE RBRACE COLON ]
+##
+## The known suffix of the stack is as follows:
+## ARROW
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE IDENT VBAR FLOAT ARROW FLOAT ARROW
+##
+## Ends in an error in state: 229.
+##
+## altRhs -> guardAlts . [ WHERE RBRACE COLON ]
+## guardAlts -> guardAlts . guardAlt [ WHERE VBAR RBRACE COLON ]
+##
+## The known suffix of the stack is as follows:
+## guardAlts
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+## In state 226, spurious reduction of production guardAlt -> VBAR exp0 ARROW exp
+## In state 231, spurious reduction of production guardAlts -> guardAlt
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE IDENT ARROW FLOAT ARROW
+##
+## Ends in an error in state: 232.
+##
+## alt -> pat altRhs . wherePart [ RBRACE COLON ]
+##
+## The known suffix of the stack is as follows:
+## pat altRhs
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+## In state 228, spurious reduction of production altRhs -> ARROW exp
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL FLOAT WHERE WITH
+##
+## Ends in an error in state: 233.
+##
+## wherePart -> WHERE . decls [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT COLON # ]
+##
+## The known suffix of the stack is as follows:
+## WHERE
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL FLOAT WHERE LBRACE IDENT COLCOL IDENT STR
+##
+## Ends in an error in state: 235.
+##
+## decls -> LBRACE decls1 . RBRACE [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT COLON # ]
+## decls0 -> decls1 . SEMICOLON [ UNDERSCORE STR SEMICOLON LBRACE INT IDENT FLOAT ]
+##
+## The known suffix of the stack is as follows:
+## LBRACE decls1
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 116, spurious reduction of production atype1 -> varid
+## In state 62, spurious reduction of production btype1 -> atype1
+## In state 132, spurious reduction of production btype -> btype1
+## In state 135, spurious reduction of production topType1 -> btype
+## In state 122, spurious reduction of production topType0 -> topType1
+## In state 123, spurious reduction of production topType -> topType0
+## In state 124, spurious reduction of production gendecl -> vars COLCOL topType
+## In state 157, spurious reduction of production decl -> gendecl
+## In state 240, spurious reduction of production decls1 -> decls0 decl
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL FLOAT WHERE LBRACE WITH
+##
+## Ends in an error in state: 238.
+##
+## decls0 -> decls0 . SEMICOLON [ UNDERSCORE STR SEMICOLON LBRACE INT IDENT FLOAT ]
+## decls1 -> decls0 . decl [ SEMICOLON RBRACE ]
+##
+## The known suffix of the stack is as follows:
+## decls0
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE IDENT ARROW FLOAT WHERE LBRACE FLOAT EQUAL FLOAT RBRACE WITH
+##
+## Ends in an error in state: 244.
+##
+## alts -> alts1 . [ RBRACE ]
+## alts1 -> alts1 . COLON alt [ RBRACE COLON ]
+## alts1 -> alts1 . COLON [ RBRACE COLON ]
+##
+## The known suffix of the stack is as follows:
+## alts1
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL CASE FLOAT OF LBRACE IDENT ARROW FLOAT COLON WITH
+##
+## Ends in an error in state: 245.
+##
+## alts1 -> alts1 COLON . alt [ RBRACE COLON ]
+## alts1 -> alts1 COLON . [ RBRACE COLON ]
+##
+## The known suffix of the stack is as follows:
+## alts1 COLON
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL IF FLOAT ARROW
+##
+## Ends in an error in state: 251.
+##
+## exp10b -> IF exp . THEN exp ELSE exp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## IF exp
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL IF FLOAT THEN WITH
+##
+## Ends in an error in state: 252.
+##
+## exp10b -> IF exp THEN . exp ELSE exp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## IF exp THEN
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL IF FLOAT THEN FLOAT ARROW
+##
+## Ends in an error in state: 253.
+##
+## exp10b -> IF exp THEN exp . ELSE exp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## IF exp THEN exp
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL IF FLOAT THEN FLOAT ELSE WITH
+##
+## Ends in an error in state: 254.
+##
+## exp10b -> IF exp THEN exp ELSE . exp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## IF exp THEN exp ELSE
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT DOTDOT FLOAT ARROW
+##
+## Ends in an error in state: 256.
+##
+## aexp -> LBRACKET listd . RBRACKET [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+##
+## The known suffix of the stack is as follows:
+## LBRACKET listd
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+## In state 271, spurious reduction of production listd -> exp DOTDOT exp
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT COMMA FLOAT COMMA FLOAT ARROW
+##
+## Ends in an error in state: 258.
+##
+## exps2 -> exps2 . COMMA exp [ RBRACKET COMMA ]
+## listd -> exps2 . [ RBRACKET ]
+##
+## The known suffix of the stack is as follows:
+## exps2
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+## In state 260, spurious reduction of production exps2 -> exps2 COMMA exp
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT COMMA FLOAT COMMA WITH
+##
+## Ends in an error in state: 259.
+##
+## exps2 -> exps2 COMMA . exp [ RPAREN RBRACKET COMMA ]
+##
+## The known suffix of the stack is as follows:
+## exps2 COMMA
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT ARROW
+##
+## Ends in an error in state: 261.
+##
+## exps2 -> exp . COMMA exp [ RBRACKET COMMA ]
+## listd -> exp . [ RBRACKET ]
+## listd -> exp . zipquals [ RBRACKET ]
+## listd -> exp . DOTDOT exp [ RBRACKET ]
+## listd -> exp . COMMA exp DOTDOT [ RBRACKET ]
+## listd -> exp . DOTDOT [ RBRACKET ]
+## listd -> exp . COMMA exp DOTDOT exp [ RBRACKET ]
+##
+## The known suffix of the stack is as follows:
+## exp
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT VBAR WITH
+##
+## Ends in an error in state: 262.
+##
+## zipquals -> VBAR . quals [ VBAR RBRACKET ]
+##
+## The known suffix of the stack is as follows:
+## VBAR
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT VBAR FLOAT LEFTARROW FLOAT ARROW
+##
+## Ends in an error in state: 263.
+##
+## quals -> quals . COMMA qual [ VBAR RBRACKET COMMA ]
+## zipquals -> VBAR quals . [ VBAR RBRACKET ]
+##
+## The known suffix of the stack is as follows:
+## VBAR quals
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+## In state 268, spurious reduction of production qual -> exp LEFTARROW exp
+## In state 269, spurious reduction of production quals -> qual
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT VBAR FLOAT COMMA WITH
+##
+## Ends in an error in state: 264.
+##
+## quals -> quals COMMA . qual [ VBAR RBRACKET COMMA ]
+##
+## The known suffix of the stack is as follows:
+## quals COMMA
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT VBAR FLOAT ARROW
+##
+## Ends in an error in state: 266.
+##
+## qual -> exp . LEFTARROW exp [ VBAR RBRACKET COMMA ]
+## qual -> exp . [ VBAR RBRACKET COMMA ]
+##
+## The known suffix of the stack is as follows:
+## exp
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT VBAR FLOAT LEFTARROW WITH
+##
+## Ends in an error in state: 267.
+##
+## qual -> exp LEFTARROW . exp [ VBAR RBRACKET COMMA ]
+##
+## The known suffix of the stack is as follows:
+## exp LEFTARROW
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT DOTDOT WITH
+##
+## Ends in an error in state: 270.
+##
+## listd -> exp DOTDOT . exp [ RBRACKET ]
+## listd -> exp DOTDOT . [ RBRACKET ]
+##
+## The known suffix of the stack is as follows:
+## exp DOTDOT
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT COMMA WITH
+##
+## Ends in an error in state: 272.
+##
+## exps2 -> exp COMMA . exp [ RBRACKET COMMA ]
+## listd -> exp COMMA . exp DOTDOT [ RBRACKET ]
+## listd -> exp COMMA . exp DOTDOT exp [ RBRACKET ]
+##
+## The known suffix of the stack is as follows:
+## exp COMMA
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT COMMA FLOAT ARROW
+##
+## Ends in an error in state: 273.
+##
+## exps2 -> exp COMMA exp . [ RBRACKET COMMA ]
+## listd -> exp COMMA exp . DOTDOT [ RBRACKET ]
+## listd -> exp COMMA exp . DOTDOT exp [ RBRACKET ]
+##
+## The known suffix of the stack is as follows:
+## exp COMMA exp
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT COMMA FLOAT DOTDOT WITH
+##
+## Ends in an error in state: 274.
+##
+## listd -> exp COMMA exp DOTDOT . [ RBRACKET ]
+## listd -> exp COMMA exp DOTDOT . exp [ RBRACKET ]
+##
+## The known suffix of the stack is as follows:
+## exp COMMA exp DOTDOT
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT VBAR FLOAT VBAR WITH
+##
+## Ends in an error in state: 277.
+##
+## zipquals -> zipquals VBAR . quals [ VBAR RBRACKET ]
+##
+## The known suffix of the stack is as follows:
+## zipquals VBAR
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LBRACKET FLOAT VBAR FLOAT VBAR FLOAT LEFTARROW FLOAT ARROW
+##
+## Ends in an error in state: 278.
+##
+## quals -> quals . COMMA qual [ VBAR RBRACKET COMMA ]
+## zipquals -> zipquals VBAR quals . [ VBAR RBRACKET ]
+##
+## The known suffix of the stack is as follows:
+## zipquals VBAR quals
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+## In state 268, spurious reduction of production qual -> exp LEFTARROW exp
+## In state 269, spurious reduction of production quals -> qual
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT STR COLCOL WITH
+##
+## Ends in an error in state: 280.
+##
+## decl -> funlhs COLCOL . typed rhs [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## funlhs COLCOL
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: IDENT STR COLCOL IDENT WHERE
+##
+## Ends in an error in state: 281.
+##
+## decl -> funlhs COLCOL typed . rhs [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## funlhs COLCOL typed
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 59, spurious reduction of production type1 -> btype1
+## In state 55, spurious reduction of production typed -> type1
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL FLOAT ARROW
+##
+## Ends in an error in state: 282.
+##
+## rhs -> rhs1 . wherePart [ UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## rhs1
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+## In state 279, spurious reduction of production rhs1 -> EQUAL exp
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT VBAR FLOAT EQUAL FLOAT ARROW
+##
+## Ends in an error in state: 285.
+##
+## gdrhs -> gdrhs . gddef [ WHERE VBAR UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+## rhs1 -> gdrhs . [ WHERE UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## gdrhs
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+## In state 315, spurious reduction of production gddef -> VBAR exp0 EQUAL exp
+## In state 287, spurious reduction of production gdrhs -> gddef
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LET LBRACE RBRACE WITH
+##
+## Ends in an error in state: 290.
+##
+## exp10b -> LET ldecls . IN exp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## LET ldecls
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LET LBRACE RBRACE IN WITH
+##
+## Ends in an error in state: 291.
+##
+## exp10b -> LET ldecls IN . exp [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF LEFTARROW LBRACE INT IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON ARROW # ]
+##
+## The known suffix of the stack is as follows:
+## LET ldecls IN
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LPAREN IDENT EQUAL FLOAT ARROW
+##
+## Ends in an error in state: 293.
+##
+## aexp -> LPAREN vfields . RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## aexp -> LPAREN vfields . VBAR exp RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## vfields -> vfields . COMMA vfield [ VBAR RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN vfields
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+## In state 302, spurious reduction of production vfield -> varid EQUAL exp
+## In state 303, spurious reduction of production vfields -> vfield
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LPAREN IDENT EQUAL FLOAT VBAR WITH
+##
+## Ends in an error in state: 294.
+##
+## aexp -> LPAREN vfields VBAR . exp RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN vfields VBAR
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LPAREN IDENT EQUAL FLOAT VBAR FLOAT ARROW
+##
+## Ends in an error in state: 295.
+##
+## aexp -> LPAREN vfields VBAR exp . RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN vfields VBAR exp
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LPAREN IDENT EQUAL FLOAT COMMA WITH
+##
+## Ends in an error in state: 298.
+##
+## vfields -> vfields COMMA . vfield [ VBAR RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## vfields COMMA
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LPAREN IDENT EQUAL FLOAT COMMA IDENT WITH
+##
+## Ends in an error in state: 300.
+##
+## vfield -> varid . EQUAL exp [ VBAR RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## varid
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LPAREN IDENT EQUAL WITH
+##
+## Ends in an error in state: 301.
+##
+## vfield -> varid EQUAL . exp [ VBAR RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## varid EQUAL
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LPAREN IDENT WITH
+##
+## Ends in an error in state: 304.
+##
+## var -> varid . [ UNDERSCORE STR RPAREN MINUS LPAREN LET LBRACKET INT IF IDENT FLOAT COMMA COLCOL CASE AROBAS ANTISLASH ]
+## vfield -> varid . EQUAL exp [ VBAR RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## varid
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LPAREN FLOAT COMMA FLOAT ARROW
+##
+## Ends in an error in state: 305.
+##
+## aexp -> LPAREN exps2 . RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## exps2 -> exps2 . COMMA exp [ RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN exps2
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+## In state 310, spurious reduction of production exps2 -> exp COMMA exp
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LPAREN FLOAT ARROW
+##
+## Ends in an error in state: 307.
+##
+## aexp -> LPAREN exp . RPAREN [ WHERE VBAR UNDERSCORE THEN STR SEMICOLON RPAREN RBRACKET RBRACE OF MINUS LPAREN LET LEFTARROW LBRACKET LBRACE INT IF IDENT FLOAT EQUAL ELSE DOTDOT COMMA COLON COLCOL CASE ARROW ANTISLASH # ]
+## exps2 -> exp . COMMA exp [ RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN exp
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 198, spurious reduction of production exp0 -> exp0a
+## In state 206, spurious reduction of production exp_err -> exp0
+## In state 188, spurious reduction of production exp -> exp_err
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT EQUAL LPAREN FLOAT COMMA WITH
+##
+## Ends in an error in state: 309.
+##
+## exps2 -> exp COMMA . exp [ RPAREN COMMA ]
+##
+## The known suffix of the stack is as follows:
+## exp COMMA
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT VBAR FLOAT COLCOL
+##
+## Ends in an error in state: 313.
+##
+## gddef -> VBAR exp0 . EQUAL exp [ WHERE VBAR UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## VBAR exp0
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 181, spurious reduction of production exp10a -> appExp
+## In state 190, spurious reduction of production exp0a -> exp10a
+## In state 223, spurious reduction of production exp0 -> exp0a
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+topDecls: FLOAT VBAR FLOAT EQUAL WITH
+##
+## Ends in an error in state: 314.
+##
+## gddef -> VBAR exp0 EQUAL . exp [ WHERE VBAR UNDERSCORE STR SEMICOLON RBRACE LBRACE INT IDENT FLOAT # ]
+##
+## The known suffix of the stack is as follows:
+## VBAR exp0 EQUAL
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+

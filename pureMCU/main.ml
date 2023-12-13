@@ -47,7 +47,7 @@ let string s =
     lexbuf p stdout  (* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)
 
 (*let lexpar f = if (Filename.extension f) = ".ml" then (Mllexer.token, Mlparser.exp) else (Milexer.token, Miparser.exp)*)
-let lexpar f = if (Filename.extension f) = ".ml" then (Mllexer.token, Mlparser.exp) else (Indenter.token, Miparser.exp)
+let lexpar f = if (Filename.extension f) = ".ml" then (Mllexer.token, Mlparser.exp) else (Indenter.token, Miparser.topDecls)
 
 let file_ast f =
   let inchan = open_in f in
@@ -77,7 +77,7 @@ let file_lexer f =
 let file f = (* ファイルをコンパイルしてファイルに出力する (caml2html: main_file) *)
   Format.printf "extension '%s'\n" (Filename.extension f);
   let inchan = open_in f in
-  let (lexerf, parsef) = if (Filename.extension f) = ".ml" then (Mllexer.token, Mlparser.exp) else (Milexer.token, Miparser.exp) in
+  let (lexerf, parsef) = if (Filename.extension f) = ".ml" then (Mllexer.token, Mlparser.exp) else (Milexer.token, Miparser.topDecls) in
   let outchan = open_out (f ^ ".s") in
   let p = parsechan parsef lexerf (Lexing.from_channel inchan) in
   try
