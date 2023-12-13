@@ -21,7 +21,7 @@ let get_pos_info pos =
 %token IMPLIES
 %token MOD
 %token AROBAS
-%token COCO
+%token COLCOL
 %token SHOW
 %token WITH
 %token OTHERWISE
@@ -87,13 +87,11 @@ let get_pos_info pos =
 
 
 topDecls:
-| topDecl   
-    { $1 }
-| topDecl topDecls
-    { $1 }
+| topDecl+   
+    { Todo }
 
 topDecl:
-| decl       { $1 }
+| decl       { Todo }
 
 decls:
 | LBRACE decls1 RBRACE
@@ -101,32 +99,32 @@ decls:
 
 decls1:
 | decls0 decl
-    { $1 }
+    { Todo }
 
 decls0:
-| {}
-| decls0 SEMICOLON { $1 }
-| decls1 SEMICOLON { $1 }
+| { Todo }
+| decls0 SEMICOLON { Todo }
+| decls1 SEMICOLON { Todo }
 
 decl:
 | gendecl
-    { $1 }
+    { Todo }
 | funlhs rhs
-    { $1 }
-| funlhs COCO typed rhs
-    { $1 }
+    { Todo }
+| funlhs COLCOL typed rhs
+    { Todo }
 | pat0 rhs
-    { $1 }
+    { Todo }
 
 funlhs:
-| funlhs0         { $1 }
-| funlhs1         { $1 }
-(*| npk             { $1 } var '+' UMLIT *)
+| funlhs0         { Todo }
+| funlhs1         { Todo }
+(*| npk             { Todo } var '+' UMLIT *)
 
 
 typed:
-| type1         { $1 }
-| btype2        { $1 }
+| type1         { Todo }
+| btype2        { Todo }
 
 
 btype:
@@ -147,44 +145,44 @@ atype:
 
 atype1:
 | varid
-| LPAREN RPAREN                         {}
-| LPAREN type1 RPAREN                   {}
-| LPAREN btype2 RPAREN                  {}
-| LPAREN tupCommas RPAREN               {}
-| LPAREN btypes2 RPAREN                 {}
-| LPAREN typeTuple RPAREN               {}
-| LPAREN tfields RPAREN                 {}
-| LPAREN tfields VBAR typed RPAREN      {}
-| LBRACKET typed RBRACKET               {}
-| LBRACKET RBRACKET                     {}
-| UNDERSCORE                            {}
+| LPAREN RPAREN                         { Todo }
+| LPAREN type1 RPAREN                   { Todo }
+| LPAREN btype2 RPAREN                  { Todo }
+| LPAREN tupCommas RPAREN               { Todo }
+| LPAREN btypes2 RPAREN                 { Todo }
+| LPAREN typeTuple RPAREN               { Todo }
+| LPAREN tfields RPAREN                 { Todo }
+| LPAREN tfields VBAR typed RPAREN      { Todo }
+| LBRACKET typed RBRACKET               { Todo }
+| LBRACKET RBRACKET                     { Todo }
+| UNDERSCORE                            { Todo }
 
 btypes2:
-| btypes2 COMMA btype2                  {}
-| btype2 COMMA btype2                   {}
+| btypes2 COMMA btype2                  { Todo }
+| btype2 COMMA btype2                   { Todo }
 
 tfields:
-| tfields COMMA tfield                  {}
-| tfield                                {}
+| tfields COMMA tfield                  { Todo }
+| tfield                                { Todo }
 
 tfield:
-| varid COCO typed                      {}
+| varid COLCOL typed                      { Todo }
 
 numlit:
-| INT                                   { $1 }
-| FLOAT                                 { $1 }
+| INT                                   { Int($1) }
+| FLOAT                                 { Float($1) }
 
 pat0:
-| var                                   { $1 }
-| numlit                                { $1 }
-| pat0_vI                               { $1 }
+| var                                   { Todo }
+| numlit                                { Todo }
+| pat0_vI                               { Todo }
 
 varid:
-| IDENT					{ $1 }
+| IDENT					{ Var($1) }
 
 
 rhs:
-| rhs1 wherePart			{ $1 }
+| rhs1 wherePart			{ Todo }
 
 rhs1:
 | EQUAL exp				{}
@@ -202,22 +200,22 @@ wherePart:
 | WHERE decls				{}
 
 funlhs0:
-| pat10_vI varop    pat0      {}
+| pat10_vI varop    pat0      { Todo }
 (* | infixPat varop    pat0      {} *)
-| numlit   varop    pat0      {}
+| numlit   varop    pat0      { Todo }
 (*| var      varop_pl pat0      {} *)
-| var      PLUS pat0_INT  {}
+| var      PLUS pat0_INT  { Todo }
 
 funlhs1:
-| LBRACE funlhs0 RBRACE 	{}
-| LBRACE funlhs1 RBRACE 	{}
-(*| LBRACE npk RBRACE 	{} *)
-| var apat		{}
-| funlhs1 apat		{}
+| LBRACE funlhs0 RBRACE 	{ Todo }
+| LBRACE funlhs1 RBRACE 	{ Todo }
+(*| LBRACE npk RBRACE 	{ Todo } *)
+| var apat		{ Todo }
+| funlhs1 apat		{ Todo }
 
 varop:
-| PLUS			{}
-| MINUS			{}
+| PLUS			{ Todo }
+| MINUS			{ Todo }
 (*
 | varop_mipl
 
@@ -234,75 +232,75 @@ varop_pl:
 *)
 
 pat10_vI:
-| fpat			{}
-| apat_vI		{}
+| fpat			{ Todo }
+| apat_vI		{ Todo }
 
 pat0_INT:
-| var			{}
-| pat0_vI		{}
+| var			{ Todo }
+| pat0_vI		{ Todo }
 
 pat0_vI:
-| pat10_vI		{}
+| pat10_vI		{ Todo }
 (*| infixPat		{} *)
 
 pat:
-| npk	{}
-| pat_npk	{}
+| npk	{ Todo }
+| pat_npk	{ Todo }
 
 npk:
-| var PLUS numlit {}
+| var PLUS numlit { Todo }
 
 pat_npk:
-| pat0 COCO typed {}
-| pat0 {}
+| pat0 COLCOL typed { Todo }
+| pat0 { Todo }
 var:
-| varid			{ $1 }
+| varid			{ Todo }
 
 tupCommas:
-| tupCommas COMMA	{}
-| COMMA	{}
+| tupCommas COMMA	{ Todo }
+| COMMA	{ Todo }
 
 fpat:
-| fpat apat		{}
-(* | gcon apat		{} *)
+|  apat+		{ Todo }
+(* | gcon apat		{ Todo } *)
 
 apat:
-| numlit		{}
-| var		{}
-| apat_vI		{}
+| numlit		{ Todo }
+| var		{ Todo }
+| apat_vI		{ Todo }
 
 apat_vI:
-| var AROBAS apat	{}
+| var AROBAS apat	{ Todo  }
 (* | gcon | qcon '{' patbinds '}' *)
 (*| CHARLIT*)
-| STR			{}
-| UNDERSCORE			{}
+| STR			{ Todo }
+| UNDERSCORE		{ Todo }
 (* '(' pat_npk ')' | '(' npk ')'| '(' pats2 ')'| '[' pats1 ']'  | '~' apat                    *)
 
 gendecl:
 (* INFIXN ... *)
-| vars COCO topType {}
+| vars COLCOL topType { Todo }
 
 topType:
 (* | ALL varids '.' topType0 *)
-| topType0 {}
+| topType0 { Todo }
 
 topType0: 
-| context IMPLIES topType1    {}
-| topType1  {}
+| context IMPLIES topType1    { Todo }
+| topType1  { Todo }
 
 topType1:
-(* | bpolyType ARROW topType1   {}*)
-| btype1    ARROW topType1    {}
-| btype2    ARROW topType1    {}
-| btype                       {}
+(* | bpolyType ARROW topType1   { Todo }*)
+| btype1    ARROW topType1    { Todo }
+| btype2    ARROW topType1    { Todo }
+| btype                       { Todo }
 
 
 type1: 
-| btype1                      {}
-(* | bpolyType ARROW typed       {}*)
-| btype1    ARROW typed       {}
-| btype2    ARROW typed       {}
+| btype1                      { Todo }
+(* | bpolyType ARROW typed       { Todo }*)
+| btype1    ARROW typed       { Todo }
+| btype2    ARROW typed       { Todo }
 
 
 
@@ -310,198 +308,198 @@ type1:
 
 
 typeTuple:
-| type1     COMMA typed          {}
-| btype2    COMMA type1         {}
-| btypes2   COMMA type1         {}
-| typeTuple COMMA typed          {}
+| type1     COMMA typed          { Todo }
+| btype2    COMMA type1         { Todo }
+| btypes2   COMMA type1         { Todo }
+| typeTuple COMMA typed          { Todo }
 
 
 vars:
-| vars COMMA var {}
-| var {}
+| vars COMMA var { Todo }
+| var { Todo }
 
 
 context:
-| LPAREN RPAREN			{}
-| btype2			{}
-| LPAREN btype2 RPAREN			{}
-| LPAREN btypes2 RPAREN			{}
-| lacks			{}
-| LPAREN lacks1 RPAREN			{}
+| LPAREN RPAREN			{ Unit }
+| btype2			{ Todo }
+| LPAREN btype2 RPAREN			{ Todo }
+| LPAREN btypes2 RPAREN			{ Todo }
+| lacks			{ Todo }
+| LPAREN lacks1 RPAREN			{ Todo }
 
 lacks:
-| varid ANTISLASH varid {}
+| varid ANTISLASH varid { Todo }
 (* .. *)
 
 lacks1:
-| btypes2 COMMA lacks		{}
-| lacks1 COMMA btypes2		{}
-| lacks1 COMMA lacks		{}
-| btype2 COMMA lacks		{}
-| lacks		{}
+| btypes2 COMMA lacks		{ Todo }
+| lacks1 COMMA btypes2		{ Todo }
+| lacks1 COMMA lacks		{ Todo }
+| btype2 COMMA lacks		{ Todo }
+| lacks		{ Todo }
 
 exp:
-| exp_err	{}
+| exp_err	{ Todo }
 
 exp_err:
-| exp0a COCO sigType {}
-| exp0 {}
+| exp0a COLCOL sigType { Todo }
+| exp0 { Todo }
 
 exp0:
-| exp0a {}
-| exp0b {}
+| exp0a { Todo }
+| exp0b { Todo }
 
 exp0a:
-| infixExpa  {}
-| exp10a {}
+| infixExpa  { Todo }
+| exp10a { Todo }
 
 exp0b:
-| infixExpb {}
-| exp10b {}
+| infixExpb { Todo }
+| exp10b { Todo }
 
 infixExpa:
-| infixExpa qop MINUS exp10a {}
-| infixExpa qop exp10a {}
-| MINUS exp10a {}
-| exp10a qop MINUS exp10a {}
-| exp10a qop exp10a {}
+| infixExpa qop MINUS exp10a { Todo }
+| infixExpa qop exp10a { Todo }
+| MINUS exp10a { Todo }
+| exp10a qop MINUS exp10a { Todo }
+| exp10a qop exp10a { Todo }
 
 infixExpb:
-| infixExpa qop MINUS exp10b {}
-| infixExpa qop exp10b {}
-| MINUS exp10b {}
-| exp10a qop MINUS exp10b {}
-| exp10a qop exp10b {}
+| infixExpa qop MINUS exp10b { Todo }
+| infixExpa qop exp10b { Todo }
+| MINUS exp10b { Todo }
+| exp10a qop MINUS exp10b { Todo }
+| exp10a qop exp10b { Todo }
 
 exp10a:
-| CASE exp OF LBRACE alts RBRACE {}
+| CASE exp OF LBRACE alts RBRACE { Todo }
 (* | DO MDO *)
-| appExp {}
+| appExp { Todo }
 
 exp10b:
-| ANTISLASH pats ARROW exp {}
-| LET ldecls IN exp {}
-| IF exp THEN exp ELSE exp {}
+| ANTISLASH pats ARROW exp { Todo }
+| LET ldecls IN exp { Todo }
+| IF exp THEN exp ELSE exp { Todo }
 
 ldecls:
-| LBRACE ldecls0 RBRACE {}
-| LBRACE ldecls1 RBRACE {}
+| LBRACE ldecls0 RBRACE { Todo }
+| LBRACE ldecls1 RBRACE { Todo }
 
 ldecls0:
-| {}
-| ldecls0 SEMICOLON {}
-| ldecls1 SEMICOLON {}
+| { Todo }
+| ldecls0 SEMICOLON { Todo }
+| ldecls1 SEMICOLON { Todo }
 
 ldecls1:
-| ldecls0 ldecl {}
+| ldecls0 ldecl { Todo }
 
 ldecl:
 (* IPVARID = exp *)
-| decl {}
+| decl { Todo }
 
 appExp:
-| appExp aexp {}
-| aexp {}
+| appExp aexp { Todo }
+| aexp { Todo }
 
 aexp:
-| qvar {}
-| qvar AROBAS aexp {}
-(* | TILDE aexp {}*)
-| UNDERSCORE {}
+| qvar { Todo }
+| qvar AROBAS aexp { Todo }
+(* | TILDE aexp { Todo }*)
+| UNDERSCORE { Todo }
 (*IPVARIDi qcon qcon { fbinds }n aexp {fbinds}*)
-| numlit {}
-| STR {}
+| numlit { Todo }
+| STR { Todo }
 (* charleat *)
-| LPAREN exp RPAREN {}
-| LPAREN exps2 RPAREN {}
-| LPAREN vfields RPAREN {}
-| LPAREN vfields VBAR exp RPAREN {}
-| LBRACKET listd RBRACKET {}
+| LPAREN exp RPAREN { Todo }
+| LPAREN exps2 RPAREN { Todo }
+| LPAREN vfields RPAREN { Todo }
+| LPAREN vfields VBAR exp RPAREN { Todo }
+| LBRACKET listd RBRACKET { Todo }
 (*..*)
 
 qvar:
-| var {}
+| var { Todo }
 (* QVARID | ( QVAROP ) *)
 
 qop:
-| qvarop {}
-| qconop {}
+| qvarop { Todo }
+| qconop { Todo }
 
 qvarop:
-| MINUS {}
-(* | qvarop_mi {}*)
+| MINUS { Todo }
+(* | qvarop_mi { Todo }*)
 
 qconop:
 (* CONOP | `CONID`*)
-| conop {}
+| conop { Todo }
 
 conop:
-| {}
+| { Todo }
 
 exps2:
-| exps2 COMMA exp {}
-| exp COMMA exp {}
+| exps2 COMMA exp { Todo }
+| exp COMMA exp { Todo }
 
 vfields:
-| vfields COMMA vfield {}
-| vfield {}
+| vfields COMMA vfield { Todo }
+| vfield { Todo }
 
 vfield:
-| varid EQUAL exp {}
+| varid EQUAL exp { Todo }
 
 alts:
-| alts1  {}
-| COLON alts {}
+| alts1  { Todo }
+| COLON alts { Todo }
 
 alts1:
-| alts1 COLON alt {}
-| alts1 COLON {}
-| alt {}
+| alts1 COLON alt { Todo }
+| alts1 COLON { Todo }
+| alt { Todo }
 
 alt:
-| pat altRhs wherePart {}
+| pat altRhs wherePart { Todo }
 
 altRhs:
-| guardAlts {}
-| ARROW exp {}
+| guardAlts { Todo }
+| ARROW exp { Todo }
 
 guardAlts:
-| guardAlts guardAlt {}
-| guardAlt {}
+| guardAlts guardAlt { Todo }
+| guardAlt { Todo }
 
 guardAlt:
-| VBAR exp0 ARROW exp {}
+| VBAR exp0 ARROW exp { Todo }
 
 pats:
-| pats apat {}
-| apat {}
+| pats apat { Todo }
+| apat { Todo }
 
 
 sigType:
-| context IMPLIES typed {}
-| typed {}
+| context IMPLIES typed { Todo }
+| typed { Todo }
 
 
 (* list exp *)
 listd:
-| exp {}
-| exps2 {}
-| exp zipquals {}
-| exp DOTDOT exp {}
-| exp COMMA exp DOTDOT  {}
-| exp DOTDOT  {}
-| exp COMMA exp DOTDOT exp {}
+| exp { Todo }
+| exps2 { Todo }
+| exp zipquals { Todo }
+| exp DOTDOT exp { Todo }
+| exp COMMA exp DOTDOT  { Todo }
+| exp DOTDOT  { Todo }
+| exp COMMA exp DOTDOT exp { Todo }
 
 zipquals:
-| zipquals VBAR quals {}
-| VBAR quals {}
+| zipquals VBAR quals { Todo }
+| VBAR quals { Todo }
 
 quals:
-| quals COMMA qual {}
-| qual {}
+| quals COMMA qual { Todo }
+| qual { Todo }
 
 qual:
-| exp LEFTARROW exp {}
-| exp {}
+| exp LEFTARROW exp { Todo }
+| exp { Todo }
 
 

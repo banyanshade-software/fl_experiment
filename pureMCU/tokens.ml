@@ -3,6 +3,7 @@ type token =
   | SPACE of int
   | BR
   | CASE
+  | IMPLIES
   | ANTISLASH
   | UNDERSCORE
   | AROBAS
