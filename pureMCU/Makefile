@@ -3,14 +3,16 @@
 # ack.mlなどのテストプログラムをtest/に用意してmake do_testを実行すると、
 # min-camlとocamlでコンパイル・実行した結果を自動で比較します。
 
-all: debug-code
+all: debug-code top
 
 RESULT = min-caml
 NCSUFFIX = .opt
 CC = gcc
 CFLAGS = -g -O2 -Wall
 OCAMLLDFLAGS=-warn-error -31
-OCAMLYACC=menhir --infer --external-tokens Tokens 
+OCAMLYACC=menhir --infer --external-tokens Tokens --table
+#--inspection
+PACKS+=menhirLib
 
 default: debug-code top $(RESULT) do_test
 $(RESULT): debug-code top

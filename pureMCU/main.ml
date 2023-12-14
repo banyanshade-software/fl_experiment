@@ -17,12 +17,73 @@ let print_position lexbuf =
   Format.sprintf "%s:%d:%d" 
          pos.pos_fname pos.pos_lnum (pos.pos_cnum - pos.pos_bol + 1)
 
+
+(* https://gitlab.inria.fr/fpottier/menhir/-/blob/master/demos/calc-syntax-errors/calc.ml *)
+
+module I = Miparser.MenhirInterpreter
+module E = MenhirLib.ErrorReports
+module L = MenhirLib.LexerUtil
+
+
+
+
+let env checkpoint =
+  match checkpoint with
+  | I.HandlingError env ->
+      env
+  | _ ->
+      assert false
+
+
+
+let state checkpoint : int =
+  match I.top (env checkpoint) with
+  | Some (I.Element (s, _, _, _)) ->
+      I.number s
+  | None ->
+      0
+
+
+let show text positions =
+  E.extract text positions
+  |> E.sanitize
+  |> E.compress
+  |> E.shorten 20 
+
+let get text checkpoint i =
+  match I.get i (env checkpoint) with
+  | Some (I.Element (_, _, pos1, pos2)) ->
+      show text (pos1, pos2)
+  | None ->
+      (* The index is out of range. This should not happen if [$i]
+         keywords are correctly inside the syntax error message
+         database. The integer [i] should always be a valid offset
+         into the known suffix of the stack. *)
+      "???"
+
+let fail text buffer (checkpoint : _ I.checkpoint) =
+  (* Indicate where in the input file the error occurred. *)
+  let location = L.range (E.last buffer) in
+  (* Show the tokens just before and just after the error. *)
+  let indication = Printf.sprintf "Syntax error %s.\n" (E.show (show text) buffer) in
+  (* Fetch an error message from the database. *)
+  let message = MiParsingErrors.message (state checkpoint) in
+  (* Expand away the $i keywords that might appear in the message. *)
+  let message = E.expand (get text checkpoint) message in
+  (* Show these three components. *)
+  Format.eprintf "%s%s%s%!" location indication message;
+  exit 1
+
+
+let succeed _v =
+  assert false
+
+
 let parsechan parsef lexerf l =
-    try parsef lexerf l with
-    (* | Mlparser.MenhirBasics.Error as e -> Format.printf "basic error at: %s" (print_position l);
-      raise e *)
-    |  _ as e ->  Format.printf "other error at: %s" (print_position l);
-      raise e
+    let supplier = I.lexer_lexbuf_to_supplier lexerf l in
+    let buffer, supplier = E.wrap_supplier supplier in
+    let checkpoint = Miparser.Incremental.topDecls l.lex_curr_p in
+    I.loop_handle succeed (fail "hoo" buffer) supplier checkpoint
 
 
 
