@@ -23,7 +23,7 @@ let upper = ['A'-'Z']
 
 rule token = parse
 | eof
-    { Format.printf "lexing EOF"; EOF }
+    { (*Format.printf "lexing EOF";*) EOF }
 (*| indent as s
     { Lexing.new_line lexbuf; SPACE (String.length s - 1) } *)
 | blank+ as s
