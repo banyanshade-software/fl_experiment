@@ -20,7 +20,8 @@ let print_position lexbuf =
 
 (* https://gitlab.inria.fr/fpottier/menhir/-/blob/master/demos/calc-syntax-errors/calc.ml *)
 
-module I = Miparser.MenhirInterpreter
+module HI = Miparser.MenhirInterpreter
+module MI = Mlparser.MenhirInterpreter
 module E = MenhirLib.ErrorReports
 module L = MenhirLib.LexerUtil
 
@@ -29,7 +30,7 @@ module L = MenhirLib.LexerUtil
 
 let env checkpoint =
   match checkpoint with
-  | I.HandlingError env ->
+  | HI.HandlingError env ->
       env
   | _ ->
       assert false
@@ -37,9 +38,9 @@ let env checkpoint =
 
 
 let state checkpoint : int =
-  match I.top (env checkpoint) with
-  | Some (I.Element (s, _, _, _)) ->
-      I.number s
+  match HI.top (env checkpoint) with
+  | Some (HI.Element (s, _, _, _)) ->
+      HI.number s
   | None ->
       0
 
@@ -51,8 +52,8 @@ let show text positions =
   |> E.shorten 20 
 
 let get text checkpoint i =
-  match I.get i (env checkpoint) with
-  | Some (I.Element (_, _, pos1, pos2)) ->
+  match HI.get i (env checkpoint) with
+  | Some (HI.Element (_, _, pos1, pos2)) ->
       show text (pos1, pos2)
   | None ->
       (* The index is out of range. This should not happen if [$i]
@@ -61,7 +62,7 @@ let get text checkpoint i =
          into the known suffix of the stack. *)
       "???"
 
-let fail text buffer (checkpoint : _ I.checkpoint) =
+let fail text buffer (checkpoint : _ HI.checkpoint) =
   (* Indicate where in the input file the error occurred. *)
   let location = L.range (E.last buffer) in
   (* Show the tokens just before and just after the error. *)
@@ -80,10 +81,10 @@ let succeed _v =
 
 
 let parsechan parsef lexerf l =
-    let supplier = I.lexer_lexbuf_to_supplier lexerf l in
+    let supplier = HI.lexer_lexbuf_to_supplier lexerf l in
     let buffer, supplier = E.wrap_supplier supplier in
     let checkpoint = Miparser.Incremental.topDecls l.lex_curr_p in
-    I.loop_handle succeed (fail "hoo" buffer) supplier checkpoint
+    HI.loop_handle succeed (fail "hoo" buffer) supplier checkpoint
 
 
 
