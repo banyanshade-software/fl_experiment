@@ -102,7 +102,7 @@ let fail text buffer (checkpoint : _ HI.checkpoint) =
 
 
 let succeed _v =
-  assert false
+  _v (*assert false*)
 
 (*
 let parsechan parsef lexerf l =
