@@ -1,0 +1,10 @@
+
+# - : Tokens.token list =
+[Tokens.LET; Tokens.REC; Tokens.IDENT "fib"; Tokens.IDENT "n"; Tokens.EQUAL;
+ Tokens.IF; Tokens.IDENT "n"; Tokens.LESS_EQUAL; Tokens.INT 1; Tokens.THEN;
+ Tokens.IDENT "n"; Tokens.ELSE; Tokens.IDENT "fib"; Tokens.LPAREN;
+ Tokens.IDENT "n"; Tokens.MINUS; Tokens.INT 1; Tokens.RPAREN; Tokens.PLUS;
+ Tokens.IDENT "fib"; Tokens.LPAREN; Tokens.IDENT "n"; Tokens.MINUS;
+ Tokens.INT 2; Tokens.RPAREN; Tokens.IN; Tokens.IDENT "print_int";
+ Tokens.LPAREN; Tokens.IDENT "fib"; Tokens.INT 30; Tokens.RPAREN]
+# 
