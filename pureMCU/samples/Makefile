@@ -5,7 +5,8 @@
 all: \
 test1.lex.ok test1.ast.ok  \
 test2.lex.ok test2.ast.ok  \
-fib.lex.ok
+fib.lex.ok fib.ast.ok \
+fibh.lex.ok fibh.ast.ok \
 
 
 
