@@ -1,4 +1,6 @@
 
-toto x = x + z
-  where z = y
-        y = 2 * x
+toto x = x + zzzzzzzzzz
+    where zzzzzzzzzz = y
+          y = 2 * x + toto
+              where toto = 4
+                    titi = 8

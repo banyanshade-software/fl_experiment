@@ -22,6 +22,8 @@ let lower = ['a'-'z']
 let upper = ['A'-'Z']
 
 rule token = parse
+| eof
+    { Format.printf "lexing EOF"; EOF }
 (*| indent as s
     { Lexing.new_line lexbuf; SPACE (String.length s - 1) } *)
 | blank+ as s
@@ -133,8 +135,6 @@ rule token = parse
     { IDENT(Lexing.lexeme lexbuf) }
 | upper (digit|lower|upper|'_')*
     { TIDENT(Lexing.lexeme lexbuf) }
-| eof
-    { EOF }
 | _
     { failwith
         (Printf.sprintf "(mira) unknown token '%s' near characters %d-%d"

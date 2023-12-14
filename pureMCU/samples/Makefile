@@ -5,6 +5,7 @@
 all: \
 test1.lex.ok test1.ast.ok  \
 test2.lex.ok test2.ast.ok  \
+fib.lex.ok
 
 
 
@@ -15,6 +16,9 @@ test2.lex.ok test2.ast.ok  \
 CMTOP=min-caml.top
 
 %.lex.out: %.mira ../$(CMPTOP)
+	(cd .. && echo 'Main.file_lex "samples/$<";; #quit;;' | ./$(CMTOP) 2>&1) | tail +3 > $@ 
+
+%.lex.out: %.ml ../$(CMPTOP)
 	(cd .. && echo 'Main.file_lex "samples/$<";; #quit;;' | ./$(CMTOP) 2>&1) | tail +3 > $@ 
 
 %.lex.ok: %.lex.out %.lex.ref 

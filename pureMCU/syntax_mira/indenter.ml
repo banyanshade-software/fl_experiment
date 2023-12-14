@@ -10,7 +10,7 @@ let error_location lexbuf =
         (s.Lexing.pos_cnum-s.Lexing.pos_bol)
         (Lexing.lexeme lexbuf)
 
-let convert_space_to_indent width f =
+let convert_space_to_indent f =
   let istack = ref [] in
   let nextindent = ref false in
   let store_indent_on_next t = (nextindent := true; [t]) in
@@ -28,7 +28,7 @@ let convert_space_to_indent width f =
   let rec pop1 lexbuf st n =
       if [] = st then [] else 
       let h::r = st in
-      Format.printf "pop1 %d %d\n" n h;
+      (* Format.printf "pop1 %d %d\n" n h;*)
       if n>h then failwith (Printf.sprintf "bad indent '%s'" (error_location lexbuf))
              else if n=h then (istack:=st;[T.RBRACE]) 
                          else T.RBRACE::(pop1 lexbuf r n) 
@@ -39,22 +39,24 @@ let convert_space_to_indent width f =
       if n==h then [T.SEMICOLON] 
               else if n>h then [] else (pop1 lexbuf st n) in
 
-  let pop lexbuf st n = T.PLUS_DOT :: (pop2 lexbuf st n) in
+  let pop lexbuf st n = T.BR :: (pop2 lexbuf st n) in 
+  (*let pop = pop2 in *)
 
   fun lexbuf -> match f lexbuf with
     | T.SPACE n ->
-        Format.printf "space indent %d\n" n;
-        pop lexbuf !istack (n+1)
+        (*Format.printf "space indent %d\n" n;*)
+        pop lexbuf !istack (n+1)  (* next token will be on n+1 *)
     | T.WHERE -> store_indent_on_next T.WHERE
     | T.OF    -> store_indent_on_next T.OF
     | T.LET   -> store_indent_on_next T.LET
     | T.LBRACE -> (nextindent:=false;[T.LBRACE])
     | T.EOF ->
-        pop lexbuf !istack 0; [EOF]
+        (*Format.printf "found EOF";*)
+        (pop lexbuf !istack 0) @ [ T.EOF ]
     | e -> if !nextindent then (store_indent lexbuf;
                                 [T.LBRACE; e]
                                )
-           else (Format.printf "found ident %d-%d\n" (col lexbuf) (cole lexbuf); [e])
+           else [e] (* (Format.printf "found ident %d-%d\n" (col lexbuf) (cole lexbuf); [e]) *)
 
 let flatten f =
   let xs = ref [] in
@@ -62,6 +64,6 @@ let flatten f =
     | x::xs' -> xs := xs'; x
     | [] -> (match f lexbuf with
       | x::xs' -> xs := xs'; x
-      | [] -> failwith "Lexer did nto return EOF token")
+      | [] -> failwith "Lexer did not return EOF token")
 
-let token = Milexer.token |> convert_space_to_indent 4 |> flatten
+let token = Milexer.token |> convert_space_to_indent |> flatten
