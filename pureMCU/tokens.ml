@@ -1,7 +1,8 @@
 
 type token = 
   | SPACE of int
-  | BR
+  | NOP
+  | NOP2
   | CASE
   | IMPLIES
   | ANTISLASH

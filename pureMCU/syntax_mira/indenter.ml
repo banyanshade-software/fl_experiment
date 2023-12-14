@@ -22,7 +22,7 @@ let convert_space_to_indent f =
     s.pos_cnum - s.pos_bol in
   let store_indent lb = 
     nextindent:=false; 
-    Format.printf "store ident %d-%d\n" (col lb) (cole lb);
+    (* Format.printf "store ident %d-%d\n" (col lb) (cole lb); *)
     istack := (col lb) :: !istack
     in
   let rec pop1 lexbuf st n =
@@ -34,13 +34,13 @@ let convert_space_to_indent f =
                          else T.RBRACE::(pop1 lexbuf r n) 
      in
   let pop2 lexbuf st n =
-      if [] = st then [] else 
+      if [] = st then [T.NOP] else 
       let h::_ = st in
       if n==h then [T.SEMICOLON] 
-              else if n>h then [] else (pop1 lexbuf st n) in
+              else if n>h then [T.NOP2] else (pop1 lexbuf st n) in
 
-  let pop lexbuf st n = T.BR :: (pop2 lexbuf st n) in 
-  (*let pop = pop2 in *)
+  (*let pop lexbuf st n = T.BR :: (pop2 lexbuf st n) in *)
+  let pop = pop2 in 
 
   fun lexbuf -> match f lexbuf with
     | T.SPACE n ->
@@ -66,4 +66,11 @@ let flatten f =
       | x::xs' -> xs := xs'; x
       | [] -> failwith "Lexer did not return EOF token")
 
-let token = Milexer.token |> convert_space_to_indent |> flatten
+
+let rec remove_nop f =
+  fun lexbuf -> match f lexbuf with
+    | T.NOP  -> remove_nop f lexbuf
+    | T.NOP2 -> remove_nop f lexbuf
+    | e -> e
+
+let token = Milexer.token |> convert_space_to_indent |> flatten |> remove_nop

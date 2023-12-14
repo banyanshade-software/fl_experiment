@@ -65,7 +65,6 @@ let get_pos_info pos =
 %token COLON2EQ
 %token COLON
 %token EOF
-%token BR
 
 %nonassoc IN
 %right prec_let
