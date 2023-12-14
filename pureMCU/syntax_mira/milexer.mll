@@ -9,6 +9,9 @@ and (but not really) :
     https://github.com/marcelgoh/opythn/blob/master/src/lexer.mll 
 *)
 
+
+let curr_col l = l.Lexing.lex_start_p.pos_cnum - l.Lexing.lex_start_p.pos_bol
+let is_start_of_line l = (curr_col l = 0)
 }
 
 let eol = '\r'? '\n'
@@ -19,10 +22,11 @@ let lower = ['a'-'z']
 let upper = ['A'-'Z']
 
 rule token = parse
-| indent as s
-    { Lexing.new_line lexbuf; SPACE (String.length s - 1) }
-| blank+
-    { token lexbuf }
+(*| indent as s
+    { Lexing.new_line lexbuf; SPACE (String.length s - 1) } *)
+| blank+ as s
+    { if is_start_of_line lexbuf then SPACE (String.length s - 1)
+                                 else token lexbuf}
 | eol
     { Lexing.new_line lexbuf; token lexbuf}
 | "/*"
