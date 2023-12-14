@@ -29,6 +29,9 @@ CMTOP=min-caml.top
 %.ast.out: %.mira ../$(CMTOP)
 	(cd .. && echo 'Main.file_ast "samples/$<";; #quit;;' | ./$(CMTOP) 2>&1) | tail +3 > $@ 
 
+%.ast.out: %.ml ../$(CMTOP)
+	(cd .. && echo 'Main.file_ast "samples/$<";; #quit;;' | ./$(CMTOP) 2>&1) | tail +3 > $@ 
+
 %.ast.ok: %.ast.out %.ast.ref
 	diff -q $*.ast.ref $*.ast.out && touch $@
 

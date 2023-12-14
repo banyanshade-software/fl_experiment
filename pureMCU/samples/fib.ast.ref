@@ -1,0 +1,15 @@
+
+# - : Syntax.t =
+Syntax.LetRec
+ ({Syntax.name = ("fib", Type.Var {contents = None});
+   args = [("n", Type.Var {contents = None})];
+   body =
+    Syntax.If (Syntax.LE (Syntax.Var "n", Syntax.Int 1), Syntax.Var "n",
+     Syntax.Add
+      (Syntax.App (Syntax.Var "fib",
+        [Syntax.Sub (Syntax.Var "n", Syntax.Int 1)]),
+      Syntax.App (Syntax.Var "fib",
+       [Syntax.Sub (Syntax.Var "n", Syntax.Int 2)])))},
+ Syntax.App (Syntax.Var "print_int",
+  [Syntax.App (Syntax.Var "fib", [Syntax.Int 30])]))
+# 
