@@ -1,0 +1,16 @@
+
+# space indent 0
+space indent 2
+store ident 6
+space indent 8
+space indent 0
+pop1 0 6
+pop1 0 6
+
+- : Tokens.token list =
+[Tokens.BR; Tokens.IDENT "toto"; Tokens.IDENT "x"; Tokens.EQUAL;
+ Tokens.IDENT "x"; Tokens.PLUS; Tokens.IDENT "z"; Tokens.BR; Tokens.WHERE;
+ Tokens.LBRACE; Tokens.IDENT "z"; Tokens.EQUAL; Tokens.IDENT "y"; Tokens.BR;
+ Tokens.IDENT "y"; Tokens.EQUAL; Tokens.INT 2; Tokens.MULT; Tokens.IDENT "x";
+ Tokens.BR; Tokens.RBRACE]
+# 
