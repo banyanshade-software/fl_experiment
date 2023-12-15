@@ -10,7 +10,7 @@ NCSUFFIX = .opt
 CC = gcc
 CFLAGS = -g -O2 -Wall
 OCAMLLDFLAGS=-warn-error -31
-OCAMLYACC=menhir --infer --external-tokens Tokens --table
+OCAMLYACC=menhir --infer --external-tokens Tokens --table  --explain --trace
 #--inspection
 PACKS+=menhirLib
 

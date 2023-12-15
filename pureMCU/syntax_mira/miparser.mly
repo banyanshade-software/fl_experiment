@@ -27,7 +27,6 @@ let get_pos_info pos =
 %token OTHERWISE
 %token UNDERSCORE
 %token WHERE
-%token ABSTYPE
 %token NOT
 %token MINUS
 %token PLUS
@@ -50,8 +49,7 @@ let get_pos_info pos =
 %token IN
 %token REC
 %token COMMA
-%token ARRAY_CREATE
-%token DOT
+(*%token DOT*)
 %token LESS_MINUS
 %token SEMICOLON
 %token LPAREN
@@ -78,7 +76,7 @@ let get_pos_info pos =
 %left AST_DOT SLASH_DOT
 %right prec_unary_minus
 %left prec_app
-%left DOT
+(* %left DOT *)
 
 
 %type <Syntax.t> topDecls
@@ -186,15 +184,15 @@ rhs:
 | rhs1 wherePart			{ Todo }
 
 rhs1:
-| EQUAL exp				{}
-| gdrhs				{}
+| EQUAL exp				{Todo}
+| gdrhs				{Todo}
 
 gdrhs:
-| gdrhs gddef				{}
-| gddef				{}
+| gdrhs gddef				{Todo}
+| gddef				{Todo}
 
 gddef:
-| VBAR exp0 EQUAL exp				{}
+| VBAR exp0 EQUAL exp				{Todo}
 
 wherePart:
 | {}
