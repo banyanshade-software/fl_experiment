@@ -84,10 +84,14 @@ let get_pos_info pos =
 
 %%
 
-
 topDecls:
-| topDecl+   
-    { Todo }
+| topDecls0 EOF { Todo }
+
+topDecls0:
+| topDecls0 SEMICOLON topDecl  { Todo }
+| topDecls0 SEMICOLON decl     { Todo }
+| topDecl    { Todo }
+| decl    { Todo }
 
 topDecl:
 | decl       { Todo }
@@ -181,11 +185,11 @@ varid:
 
 
 rhs:
-| rhs1 wherePart			{ Todo }
+| rhs1 wherePart? 		{ Todo }
 
 rhs1:
 | EQUAL exp				{Todo}
-| gdrhs				{Todo}
+(* | gdrhs				{Todo} --*)
 
 gdrhs:
 | gdrhs gddef				{Todo}
@@ -195,14 +199,14 @@ gddef:
 | VBAR exp0 EQUAL exp				{Todo}
 
 wherePart:
-| {}
+(* | {} --*)
 | WHERE decls				{}
 
 funlhs0:
 | pat10_vI varop    pat0      { Todo }
-(* | infixPat varop    pat0      {} *)
+| infixPat varop    pat0      { Todo } 
 | numlit   varop    pat0      { Todo }
-(*| var      varop_pl pat0      {} *)
+(* | var      varop_pl pat0      { Todo }  *)
 | var      PLUS pat0_INT  { Todo }
 
 funlhs1:
@@ -240,7 +244,22 @@ pat0_INT:
 
 pat0_vI:
 | pat10_vI		{ Todo }
-(*| infixPat		{} *)
+| infixPat		{ Todo }
+
+infixPat:
+| MINUS pat10   { Todo }
+| var qconop pat10  { Todo }
+| var qconop MINUS pat10    { Todo }
+| numlit qconop pat10   { Todo }
+| numlit qconop MINUS pat10 { Todo }
+| pat10_vI  qconop pat10    { Todo }
+| pat10_vI  qconop MINUS pat10  { Todo }
+| infixPat  qconop pat10    { Todo }
+| infixPat  qconop MINUS pat10  { Todo }
+
+pat10:
+| fpat  { $1 }
+| apat  { $1 }
 
 pat:
 | npk	{ Todo }
@@ -260,7 +279,7 @@ tupCommas:
 | COMMA	{ Todo }
 
 fpat:
-|  apat+		{ Todo }
+|  fpat apat		{ Todo }
 (* | gcon apat		{ Todo } *)
 
 apat:
@@ -339,19 +358,21 @@ lacks1:
 
 exp:
 | exp_err	{ Todo }
+| error { Todo }
 
 exp_err:
-| exp0a COLCOL sigType { Todo }
+(* | exp0a COLCOL sigType { Todo } --*)
 | exp0 { Todo }
 
 exp0:
 | exp0a { Todo }
-| exp0b { Todo }
+(* | exp0b { Todo } --*)
 
 exp0a:
-| infixExpa  { Todo }
+(* | infixExpa  { Todo } --*)
 | exp10a { Todo }
 
+(*
 exp0b:
 | infixExpb { Todo }
 | exp10b { Todo }
@@ -369,16 +390,22 @@ infixExpb:
 | MINUS exp10b { Todo }
 | exp10a qop MINUS exp10b { Todo }
 | exp10a qop exp10b { Todo }
+ --*)
+
 
 exp10a:
-| CASE exp OF LBRACE alts RBRACE { Todo }
+(* | CASE exp OF LBRACE alts RBRACE { Todo } *)
 (* | DO MDO *)
 | appExp { Todo }
 
+(*
 exp10b:
 | ANTISLASH pats ARROW exp { Todo }
 | LET ldecls IN exp { Todo }
 | IF exp THEN exp ELSE exp { Todo }
+
+--*)
+
 
 ldecls:
 | LBRACE ldecls0 RBRACE { Todo }
@@ -397,23 +424,23 @@ ldecl:
 | decl { Todo }
 
 appExp:
-| appExp aexp { Todo }
+(* | appExp aexp { Todo } --*)
 | aexp { Todo }
 
 aexp:
-| qvar { Todo }
+| numlit { Todo }
+(*| qvar { Todo }
 | qvar AROBAS aexp { Todo }
 (* | TILDE aexp { Todo }*)
 | UNDERSCORE { Todo }
 (*IPVARIDi qcon qcon { fbinds }n aexp {fbinds}*)
-| numlit { Todo }
 | STR { Todo }
 (* charleat *)
 | LPAREN exp RPAREN { Todo }
 | LPAREN exps2 RPAREN { Todo }
 | LPAREN vfields RPAREN { Todo }
 | LPAREN vfields VBAR exp RPAREN { Todo }
-| LBRACKET listd RBRACKET { Todo }
+| LBRACKET listd RBRACKET { Todo } --*)
 (*..*)
 
 qvar:
