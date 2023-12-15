@@ -3,6 +3,7 @@
 #
 
 all: \
+test0.lex.ok test0.ast.ok  \
 test1.lex.ok test1.ast.ok  \
 test2.lex.ok test2.ast.ok  \
 fib.lex.ok fib.ast.ok \

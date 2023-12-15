@@ -1,0 +1,4 @@
+
+# - : Tokens.token list =
+[Tokens.IDENT "f"; Tokens.IDENT "x"; Tokens.EQUAL; Tokens.IDENT "x"]
+# 
