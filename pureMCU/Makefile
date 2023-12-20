@@ -13,6 +13,7 @@ OCAMLLDFLAGS=-warn-error -31
 OCAMLYACC=menhir --infer --external-tokens Tokens --table  --explain --trace
 #--inspection
 PACKS+=menhirLib
+PACKS+=llvm
 
 default: debug-code top $(RESULT) do_test
 $(RESULT): debug-code top

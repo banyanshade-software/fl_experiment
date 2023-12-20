@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+ln -sf llvm/{*.ml{,i},libmincaml.c} .
+cd test; ln -sf llvm/{,too}manyargs.ml .; cd ..
+cd shootout; ln -sf llvm/Makefile .; cd ..
+cd bytemark; ln -sf llvm/Makefile .; cd ..
+##cd min-rt; ln -sf llvm/globals.s .; cd ..
