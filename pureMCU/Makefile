@@ -14,6 +14,8 @@ OCAMLYACC=menhir --infer --external-tokens Tokens --table  --explain --trace
 #--inspection
 PACKS+=menhirLib
 PACKS+=llvm
+PACKS+=llvm.analysis
+PACKS+=llvm.bitwriter
 
 default: debug-code top $(RESULT) do_test
 $(RESULT): debug-code top
